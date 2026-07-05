@@ -1,0 +1,184 @@
+aid: intakeq
+url: https://raw.githubusercontent.com/api-evangelist/intakeq/refs/heads/main/apis.yml
+name: IntakeQ
+kind: company
+description: IntakeQ is a HIPAA-compliant practice management platform for health and
+  wellness practitioners - therapists, chiropractors, counselors, dietitians, and
+  other small practices. It provides secure electronic intake forms, e-signatures,
+  and document sharing, and through its PracticeQ tier adds appointment scheduling,
+  a booking widget, a secure client portal, payments and invoicing, treatment notes,
+  telehealth, and insurance billing. IntakeQ publishes a documented REST API under
+  https://intakeq.com/api/v1 authenticated with an X-Auth-Key header, covering
+  clients, appointments, intake questionnaires, treatment notes, invoices, and file
+  attachments, plus webhooks for intake completion, note locking, and invoice events.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Practice Management
+- Intake Forms
+- Scheduling
+- Health and Wellness
+- EHR
+- Telehealth
+- HIPAA
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: intakeq:intakeq-clients-api
+  name: IntakeQ Clients API
+  tags:
+  - Clients
+  - Patients
+  - CRM
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
+  baseURL: https://intakeq.com/api/v1
+  properties:
+  - url: https://support.intakeq.com/article/251-intakeq-client-api
+    type: APIReference
+  - url: https://support.intakeq.com/category/560-api
+    type: Documentation
+  - url: openapi/intakeq-openapi.yml
+    type: OpenAPI
+  - url: collections/intakeq.postman_collection.json
+    type: PostmanCollection
+  - url: collections/intakeq.opencollection.json
+    type: OpenCollection
+  description: Query, create, and update clients (patients) in an IntakeQ account,
+    search by name, email, client ID, custom fields, external ID, or created/updated
+    date ranges, add and remove client tags, and retrieve a client's diagnoses.
+- aid: intakeq:intakeq-appointments-api
+  name: IntakeQ Appointments API
+  tags:
+  - Appointments
+  - Scheduling
+  - Booking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://support.intakeq.com/article/204-intakeq-appointments-api
+  baseURL: https://intakeq.com/api/v1
+  properties:
+  - url: https://support.intakeq.com/article/204-intakeq-appointments-api
+    type: APIReference
+  - url: https://support.intakeq.com/category/560-api
+    type: Documentation
+  - url: openapi/intakeq-openapi.yml
+    type: OpenAPI
+  - url: collections/intakeq.postman_collection.json
+    type: PostmanCollection
+  - url: collections/intakeq.opencollection.json
+    type: OpenCollection
+  description: Query appointments by client, date range, status, or practitioner,
+    retrieve a single appointment, read booking settings (services, locations,
+    practitioners), and create, update, or cancel appointments in the PracticeQ
+    scheduler.
+- aid: intakeq:intakeq-intake-forms-api
+  name: IntakeQ Intake Forms API
+  tags:
+  - Intake Forms
+  - Questionnaires
+  - Consent Forms
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://support.intakeq.com/article/31-intakeq-api
+  baseURL: https://intakeq.com/api/v1
+  properties:
+  - url: https://support.intakeq.com/article/31-intakeq-api
+    type: APIReference
+  - url: https://support.intakeq.com/category/560-api
+    type: Documentation
+  - url: openapi/intakeq-openapi.yml
+    type: OpenAPI
+  - url: collections/intakeq.postman_collection.json
+    type: PostmanCollection
+  - url: collections/intakeq.opencollection.json
+    type: OpenCollection
+  description: Query intake form summaries, retrieve a completed intake as JSON or
+    download it as a PDF (including individual consent forms), send or resend a
+    questionnaire to a client, update office-use-only answers, and list available
+    questionnaire templates and account practitioners.
+- aid: intakeq:intakeq-treatment-notes-api
+  name: IntakeQ Treatment Notes API
+  tags:
+  - Treatment Notes
+  - Clinical Documentation
+  - SOAP Notes
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://support.intakeq.com/article/342-intakeq-notes-api
+  baseURL: https://intakeq.com/api/v1
+  properties:
+  - url: https://support.intakeq.com/article/342-intakeq-notes-api
+    type: APIReference
+  - url: https://support.intakeq.com/category/560-api
+    type: Documentation
+  - url: openapi/intakeq-openapi.yml
+    type: OpenAPI
+  - url: collections/intakeq.postman_collection.json
+    type: PostmanCollection
+  - url: collections/intakeq.opencollection.json
+    type: OpenCollection
+  description: Query treatment note summaries by client, status, or date range,
+    retrieve the full JSON of a locked treatment note, and download a treatment
+    note as a PDF. A note-locked webhook notifies external systems when staff lock
+    a note.
+- aid: intakeq:intakeq-invoices-api
+  name: IntakeQ Invoices API
+  tags:
+  - Invoices
+  - Billing
+  - Payments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://support.intakeq.com/article/385-intakeq-invoice-api
+  baseURL: https://intakeq.com/api/v1
+  properties:
+  - url: https://support.intakeq.com/article/385-intakeq-invoice-api
+    type: APIReference
+  - url: https://support.intakeq.com/category/560-api
+    type: Documentation
+  - url: openapi/intakeq-openapi.yml
+    type: OpenAPI
+  - url: collections/intakeq.postman_collection.json
+    type: PostmanCollection
+  - url: collections/intakeq.opencollection.json
+    type: OpenCollection
+  description: Query invoices by client, date range, status, practitioner, or invoice
+    number, and retrieve a single invoice by ID. An invoice-events webhook fires on
+    issue, payment, refund, cancellation, and failed auto-charge or payment-plan
+    charge events.
+- aid: intakeq:intakeq-files-api
+  name: IntakeQ Files API
+  tags:
+  - Files
+  - Attachments
+  - Documents
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://support.intakeq.com/article/430-intakeq-files-api
+  baseURL: https://intakeq.com/api/v1
+  properties:
+  - url: https://support.intakeq.com/article/430-intakeq-files-api
+    type: APIReference
+  - url: https://support.intakeq.com/category/560-api
+    type: Documentation
+  - url: openapi/intakeq-openapi.yml
+    type: OpenAPI
+  - url: collections/intakeq.postman_collection.json
+    type: PostmanCollection
+  - url: collections/intakeq.opencollection.json
+    type: OpenCollection
+  description: List a client's files and the account's folders, download a file by
+    ID, upload a new file to a client's record, and delete a file. Used to move
+    documents and attachments in and out of a client's secure file repository.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/intakeq
+- type: Website
+  url: https://intakeq.com
+- type: Documentation
+  url: https://support.intakeq.com/category/560-api
+- type: Plans
+  url: plans/intakeq-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/intakeq-rate-limits.yml
+- type: FinOps
+  url: finops/intakeq-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

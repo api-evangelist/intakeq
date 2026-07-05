@@ -1,0 +1,373 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IntakeQ API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "X-Auth-Key",
+        "value": "{{apiKey}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Clients", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Query clients", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/clients?search=&page=1",
+            "params": [
+              { "name": "search", "value": "", "type": "query", "description": "Name, email, or numeric client ID." },
+              { "name": "page", "value": "1", "type": "query", "description": "Page number (max 100 records per page)." },
+              { "name": "includeProfile", "value": "", "type": "query", "description": "Set to 'true' for the full client profile." }
+            ]
+          },
+          "docs": "Returns a list of clients. Max 100 records per page."
+        },
+        {
+          "info": { "name": "Save or update a client", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/clients",
+            "body": { "type": "json", "data": "{\n  \"Name\": \"Jane Doe\",\n  \"Email\": \"jane@example.com\"\n}" }
+          },
+          "docs": "Creates or updates a client. Include ClientId to update."
+        },
+        {
+          "info": { "name": "Add tag to client", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/clientTags",
+            "body": { "type": "json", "data": "{\n  \"ClientId\": 123,\n  \"Tag\": \"vip\"\n}" }
+          },
+          "docs": "Adds a tag to a client."
+        },
+        {
+          "info": { "name": "Remove tag from client", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://intakeq.com/api/v1/clientTags?clientId=123&tag=vip",
+            "params": [
+              { "name": "clientId", "value": "123", "type": "query", "description": "Client identifier." },
+              { "name": "tag", "value": "vip", "type": "query", "description": "Tag text to remove." }
+            ]
+          },
+          "docs": "Removes a tag from a client."
+        },
+        {
+          "info": { "name": "Query client diagnoses", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/client/:clientId/diagnoses",
+            "params": [
+              { "name": "clientId", "value": "", "type": "path", "description": "The client ID." }
+            ]
+          },
+          "docs": "Returns a list of diagnoses for the client."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Appointments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Query appointments", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/appointments?startDate=&endDate=&status=&page=1",
+            "params": [
+              { "name": "client", "value": "", "type": "query", "description": "Client name, email, or ID." },
+              { "name": "startDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "endDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "status", "value": "", "type": "query", "description": "Appointment status." },
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Returns a list of appointments."
+        },
+        {
+          "info": { "name": "Retrieve an appointment", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/appointments/:appointmentId",
+            "params": [
+              { "name": "appointmentId", "value": "", "type": "path", "description": "The appointment ID." }
+            ]
+          },
+          "docs": "Retrieves a single appointment by ID."
+        },
+        {
+          "info": { "name": "Retrieve booking settings", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/appointments/settings"
+          },
+          "docs": "Returns services, locations, and practitioners."
+        },
+        {
+          "info": { "name": "Create an appointment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/appointments",
+            "body": { "type": "json", "data": "{\n  \"PractitionerId\": \"\",\n  \"ClientId\": 123,\n  \"ServiceId\": \"\",\n  \"LocationId\": \"\",\n  \"Status\": \"Confirmed\",\n  \"UtcDateTime\": 0,\n  \"SendClientEmailNotification\": false,\n  \"ReminderType\": \"Email\"\n}" }
+          },
+          "docs": "Creates a new appointment."
+        },
+        {
+          "info": { "name": "Update an appointment", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://intakeq.com/api/v1/appointments",
+            "body": { "type": "json", "data": "{\n  \"Id\": \"\",\n  \"UtcDateTime\": 0\n}" }
+          },
+          "docs": "Updates an existing appointment."
+        },
+        {
+          "info": { "name": "Cancel an appointment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/appointments/cancellation",
+            "body": { "type": "json", "data": "{\n  \"AppointmentId\": \"\",\n  \"Reason\": \"\"\n}" }
+          },
+          "docs": "Cancels an appointment."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Intake Forms", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Query intake summaries", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/summary?client=&startDate=&endDate=&page=1",
+            "params": [
+              { "name": "client", "value": "", "type": "query", "description": "Client name." },
+              { "name": "startDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "endDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Query intake form summaries."
+        },
+        {
+          "info": { "name": "Retrieve an intake", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/:intakeId",
+            "params": [
+              { "name": "intakeId", "value": "", "type": "path", "description": "The intake ID." }
+            ]
+          },
+          "docs": "Retrieves the complete intake form as JSON."
+        },
+        {
+          "info": { "name": "Download intake PDF", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/:intakeId/pdf",
+            "params": [
+              { "name": "intakeId", "value": "", "type": "path", "description": "The intake ID." }
+            ]
+          },
+          "docs": "Downloads the full intake package as a PDF."
+        },
+        {
+          "info": { "name": "Download consent form PDF", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/:intakeId/consent/:consentFormId/pdf",
+            "params": [
+              { "name": "intakeId", "value": "", "type": "path", "description": "The intake ID." },
+              { "name": "consentFormId", "value": "", "type": "path", "description": "The consent form ID." }
+            ]
+          },
+          "docs": "Downloads a single consent form as a PDF."
+        },
+        {
+          "info": { "name": "Send a questionnaire", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/intakes/send",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Sends an intake questionnaire to a client."
+        },
+        {
+          "info": { "name": "Resend a questionnaire", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/intakes/resend",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Resends a previously sent intake."
+        },
+        {
+          "info": { "name": "Update office-use answers", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/intakes",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates office-use-only question answers on an intake."
+        },
+        {
+          "info": { "name": "List questionnaire templates", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/questionnaires"
+          },
+          "docs": "Lists available questionnaire templates."
+        },
+        {
+          "info": { "name": "List practitioners", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/practitioners"
+          },
+          "docs": "Lists account practitioners."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Treatment Notes", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Query treatment notes", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/notes/summary?client=&clientId=&status=&startDate=&endDate=&page=1",
+            "params": [
+              { "name": "client", "value": "", "type": "query", "description": "Search string." },
+              { "name": "clientId", "value": "", "type": "query", "description": "Client ID." },
+              { "name": "status", "value": "", "type": "query", "description": "Status code." },
+              { "name": "startDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "endDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "page", "value": "1", "type": "query", "description": "Page number." }
+            ]
+          },
+          "docs": "Query treatment note summaries."
+        },
+        {
+          "info": { "name": "Retrieve a treatment note", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/notes/:noteId",
+            "params": [
+              { "name": "noteId", "value": "", "type": "path", "description": "The note ID." }
+            ]
+          },
+          "docs": "Retrieves the full treatment note as JSON."
+        },
+        {
+          "info": { "name": "Download treatment note PDF", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/notes/:noteId/pdf",
+            "params": [
+              { "name": "noteId", "value": "", "type": "path", "description": "The note ID." }
+            ]
+          },
+          "docs": "Downloads a treatment note as a PDF."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Invoices", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Query invoices", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/invoices?clientId=&startDate=&endDate=&status=&page=1",
+            "params": [
+              { "name": "clientId", "value": "", "type": "query", "description": "Client ID." },
+              { "name": "startDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "endDate", "value": "", "type": "query", "description": "yyyy-MM-dd." },
+              { "name": "status", "value": "", "type": "query", "description": "Invoice status." },
+              { "name": "page", "value": "1", "type": "query", "description": "Page number (max 100 records)." }
+            ]
+          },
+          "docs": "Query invoices. Max 100 records per request."
+        },
+        {
+          "info": { "name": "Retrieve an invoice", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/invoices/:invoiceId",
+            "params": [
+              { "name": "invoiceId", "value": "", "type": "path", "description": "The invoice ID." }
+            ]
+          },
+          "docs": "Retrieves a single invoice by ID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Files", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get a client's files", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/files?clientId=123",
+            "params": [
+              { "name": "clientId", "value": "123", "type": "query", "description": "The client ID." }
+            ]
+          },
+          "docs": "Lists a client's files."
+        },
+        {
+          "info": { "name": "Get folders", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/folders"
+          },
+          "docs": "Lists the account's folders."
+        },
+        {
+          "info": { "name": "Download a file", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/files/:fileId",
+            "params": [
+              { "name": "fileId", "value": "", "type": "path", "description": "The file ID." }
+            ]
+          },
+          "docs": "Downloads a file by ID."
+        },
+        {
+          "info": { "name": "Upload a file", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/files/:clientId",
+            "params": [
+              { "name": "clientId", "value": "", "type": "path", "description": "The client ID." }
+            ],
+            "body": { "type": "formdata", "data": [ { "name": "file", "type": "file", "src": "" } ] }
+          },
+          "docs": "Uploads a file to a client's record."
+        },
+        {
+          "info": { "name": "Delete a file", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://intakeq.com/api/v1/files/:fileId",
+            "params": [
+              { "name": "fileId", "value": "", "type": "path", "description": "The file ID." }
+            ]
+          },
+          "docs": "Deletes a file by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

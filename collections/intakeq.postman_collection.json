@@ -1,0 +1,330 @@
+{
+  "info": {
+    "name": "IntakeQ API",
+    "description": "Documented REST API for the IntakeQ / PracticeQ practice management platform. Base URL: https://intakeq.com/api/v1. All requests require the account API key in an X-Auth-Key header. Standard subscriptions allow 10 requests/minute, max 500/day.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "X-Auth-Key", "type": "string" },
+      { "key": "value", "value": "{{apiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://intakeq.com/api/v1", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "Query clients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/clients?search=&page=1", "host": ["{{baseUrl}}"], "path": ["clients"], "query": [ { "key": "search", "value": "" }, { "key": "page", "value": "1" }, { "key": "includeProfile", "value": "", "disabled": true } ] },
+            "description": "Returns a list of clients. Max 100 records per page."
+          }
+        },
+        {
+          "name": "Save or update a client",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"Name\": \"Jane Doe\",\n  \"Email\": \"jane@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/clients", "host": ["{{baseUrl}}"], "path": ["clients"] },
+            "description": "Creates or updates a client. Include ClientId to update an existing client."
+          }
+        },
+        {
+          "name": "Add tag to client",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"ClientId\": 123,\n  \"Tag\": \"vip\"\n}" },
+            "url": { "raw": "{{baseUrl}}/clientTags", "host": ["{{baseUrl}}"], "path": ["clientTags"] },
+            "description": "Adds a tag to a client."
+          }
+        },
+        {
+          "name": "Remove tag from client",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/clientTags?clientId=123&tag=vip", "host": ["{{baseUrl}}"], "path": ["clientTags"], "query": [ { "key": "clientId", "value": "123" }, { "key": "tag", "value": "vip" } ] },
+            "description": "Removes a tag from a client."
+          }
+        },
+        {
+          "name": "Query client diagnoses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/client/:clientId/diagnoses", "host": ["{{baseUrl}}"], "path": ["client", ":clientId", "diagnoses"], "variable": [{ "key": "clientId", "value": "" }] },
+            "description": "Returns a list of diagnoses for the client."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "Query appointments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments?startDate=&endDate=&status=&page=1", "host": ["{{baseUrl}}"], "path": ["appointments"], "query": [ { "key": "client", "value": "", "disabled": true }, { "key": "startDate", "value": "" }, { "key": "endDate", "value": "" }, { "key": "status", "value": "" }, { "key": "page", "value": "1" } ] },
+            "description": "Returns a list of appointments."
+          }
+        },
+        {
+          "name": "Retrieve an appointment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments/:appointmentId", "host": ["{{baseUrl}}"], "path": ["appointments", ":appointmentId"], "variable": [{ "key": "appointmentId", "value": "" }] },
+            "description": "Retrieves a single appointment by ID."
+          }
+        },
+        {
+          "name": "Retrieve booking settings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments/settings", "host": ["{{baseUrl}}"], "path": ["appointments", "settings"] },
+            "description": "Returns services, locations, and practitioners."
+          }
+        },
+        {
+          "name": "Create an appointment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"PractitionerId\": \"\",\n  \"ClientId\": 123,\n  \"ServiceId\": \"\",\n  \"LocationId\": \"\",\n  \"Status\": \"Confirmed\",\n  \"UtcDateTime\": 0,\n  \"SendClientEmailNotification\": false,\n  \"ReminderType\": \"Email\"\n}" },
+            "url": { "raw": "{{baseUrl}}/appointments", "host": ["{{baseUrl}}"], "path": ["appointments"] },
+            "description": "Creates a new appointment."
+          }
+        },
+        {
+          "name": "Update an appointment",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"Id\": \"\",\n  \"UtcDateTime\": 0\n}" },
+            "url": { "raw": "{{baseUrl}}/appointments", "host": ["{{baseUrl}}"], "path": ["appointments"] },
+            "description": "Updates an existing appointment."
+          }
+        },
+        {
+          "name": "Cancel an appointment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"AppointmentId\": \"\",\n  \"Reason\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/appointments/cancellation", "host": ["{{baseUrl}}"], "path": ["appointments", "cancellation"] },
+            "description": "Cancels an appointment."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Intake Forms",
+      "item": [
+        {
+          "name": "Query intake summaries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/intakes/summary?client=&startDate=&endDate=&page=1", "host": ["{{baseUrl}}"], "path": ["intakes", "summary"], "query": [ { "key": "client", "value": "" }, { "key": "startDate", "value": "" }, { "key": "endDate", "value": "" }, { "key": "page", "value": "1" } ] },
+            "description": "Query intake form summaries."
+          }
+        },
+        {
+          "name": "Retrieve an intake",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/intakes/:intakeId", "host": ["{{baseUrl}}"], "path": ["intakes", ":intakeId"], "variable": [{ "key": "intakeId", "value": "" }] },
+            "description": "Retrieves the complete intake form as JSON."
+          }
+        },
+        {
+          "name": "Download intake PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/intakes/:intakeId/pdf", "host": ["{{baseUrl}}"], "path": ["intakes", ":intakeId", "pdf"], "variable": [{ "key": "intakeId", "value": "" }] },
+            "description": "Downloads the full intake package as a PDF."
+          }
+        },
+        {
+          "name": "Download consent form PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/intakes/:intakeId/consent/:consentFormId/pdf", "host": ["{{baseUrl}}"], "path": ["intakes", ":intakeId", "consent", ":consentFormId", "pdf"], "variable": [{ "key": "intakeId", "value": "" }, { "key": "consentFormId", "value": "" }] },
+            "description": "Downloads a single consent form as a PDF."
+          }
+        },
+        {
+          "name": "Send a questionnaire",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/intakes/send", "host": ["{{baseUrl}}"], "path": ["intakes", "send"] },
+            "description": "Sends an intake questionnaire to a client."
+          }
+        },
+        {
+          "name": "Resend a questionnaire",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/intakes/resend", "host": ["{{baseUrl}}"], "path": ["intakes", "resend"] },
+            "description": "Resends a previously sent intake."
+          }
+        },
+        {
+          "name": "Update office-use answers",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/intakes", "host": ["{{baseUrl}}"], "path": ["intakes"] },
+            "description": "Updates office-use-only question answers on an intake."
+          }
+        },
+        {
+          "name": "List questionnaire templates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/questionnaires", "host": ["{{baseUrl}}"], "path": ["questionnaires"] },
+            "description": "Lists available questionnaire templates."
+          }
+        },
+        {
+          "name": "List practitioners",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/practitioners", "host": ["{{baseUrl}}"], "path": ["practitioners"] },
+            "description": "Lists account practitioners."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Treatment Notes",
+      "item": [
+        {
+          "name": "Query treatment notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/notes/summary?client=&clientId=&status=&startDate=&endDate=&page=1", "host": ["{{baseUrl}}"], "path": ["notes", "summary"], "query": [ { "key": "client", "value": "" }, { "key": "clientId", "value": "" }, { "key": "status", "value": "" }, { "key": "startDate", "value": "" }, { "key": "endDate", "value": "" }, { "key": "page", "value": "1" } ] },
+            "description": "Query treatment note summaries."
+          }
+        },
+        {
+          "name": "Retrieve a treatment note",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/notes/:noteId", "host": ["{{baseUrl}}"], "path": ["notes", ":noteId"], "variable": [{ "key": "noteId", "value": "" }] },
+            "description": "Retrieves the full treatment note as JSON."
+          }
+        },
+        {
+          "name": "Download treatment note PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/notes/:noteId/pdf", "host": ["{{baseUrl}}"], "path": ["notes", ":noteId", "pdf"], "variable": [{ "key": "noteId", "value": "" }] },
+            "description": "Downloads a treatment note as a PDF."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "Query invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices?clientId=&startDate=&endDate=&status=&page=1", "host": ["{{baseUrl}}"], "path": ["invoices"], "query": [ { "key": "clientId", "value": "" }, { "key": "startDate", "value": "" }, { "key": "endDate", "value": "" }, { "key": "status", "value": "" }, { "key": "page", "value": "1" } ] },
+            "description": "Query invoices. Max 100 records per request."
+          }
+        },
+        {
+          "name": "Retrieve an invoice",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices/:invoiceId", "host": ["{{baseUrl}}"], "path": ["invoices", ":invoiceId"], "variable": [{ "key": "invoiceId", "value": "" }] },
+            "description": "Retrieves a single invoice by ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Files",
+      "item": [
+        {
+          "name": "Get a client's files",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/files?clientId=123", "host": ["{{baseUrl}}"], "path": ["files"], "query": [ { "key": "clientId", "value": "123" } ] },
+            "description": "Lists a client's files."
+          }
+        },
+        {
+          "name": "Get folders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/folders", "host": ["{{baseUrl}}"], "path": ["folders"] },
+            "description": "Lists the account's folders."
+          }
+        },
+        {
+          "name": "Download a file",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/files/:fileId", "host": ["{{baseUrl}}"], "path": ["files", ":fileId"], "variable": [{ "key": "fileId", "value": "" }] },
+            "description": "Downloads a file by ID."
+          }
+        },
+        {
+          "name": "Upload a file",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": { "mode": "formdata", "formdata": [ { "key": "file", "type": "file", "src": "" } ] },
+            "url": { "raw": "{{baseUrl}}/files/:clientId", "host": ["{{baseUrl}}"], "path": ["files", ":clientId"], "variable": [{ "key": "clientId", "value": "" }] },
+            "description": "Uploads a file to a client's record."
+          }
+        },
+        {
+          "name": "Delete a file",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/files/:fileId", "host": ["{{baseUrl}}"], "path": ["files", ":fileId"], "variable": [{ "key": "fileId", "value": "" }] },
+            "description": "Deletes a file by ID."
+          }
+        }
+      ]
+    }
+  ]
+}

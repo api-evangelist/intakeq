@@ -1,0 +1,174 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: IntakeQ
+providerId: intakeq
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Practice Management
+- Intake Forms
+- Scheduling
+- Health and Wellness
+- Plans
+description: >-
+  IntakeQ is sold as a per-practitioner monthly subscription with a 14-day free
+  trial (no credit card required) and month-to-month billing. There are two
+  product families: "Forms Only" (secure intake forms, e-signatures, document
+  sharing) and "Practice Management" (the PracticeQ tier - adds scheduling, a
+  booking widget, client portal, payments and invoicing, telehealth, and
+  insurance billing). Each family has a standard plan and a discounted
+  low-volume plan with submission/appointment caps. Additional practitioner
+  seats are billed on top of the base plan. The REST API is included with the
+  subscription at no extra charge; API access is enabled under More > Settings >
+  Integrations > Developer API. Prices below reflect the public pricing page as
+  observed on the created date and should be reconciled against the live page.
+notes: >-
+  IntakeQ and PracticeQ are the same company; the practice-management plans are
+  branded PracticeQ. Prices vary slightly across listing sites; verify current
+  base prices, per-seat add-ons, and volume caps on the IntakeQ pricing page
+  during reconciliation. E-prescribing is an additional monthly add-on.
+sources:
+- https://intakeq.com/pricing
+- https://www.practiceq.com/pricing
+- https://support.intakeq.com/article/102-subscription-plan-limits
+plans:
+- id: intakeq-forms-low-volume
+  name: Forms Only - Low Volume
+  type: paid
+  description: >-
+    Discounted intake-forms plan capped at roughly 10 form submissions per
+    month. Includes unlimited form templates, e-signatures, and document
+    sharing.
+  entries:
+  - label: Base Subscription
+    name: base_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '29.90'
+    userMultiplied: false
+  - label: Additional Practitioner
+    name: additional_practitioner
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '10.00'
+    userMultiplied: true
+  elements:
+  - name: Intake Forms and E-Signatures
+  - name: Document Sharing
+  - name: REST API Access
+- id: intakeq-forms-only
+  name: Forms Only
+  type: paid
+  description: >-
+    Standard intake-forms plan with unlimited form templates, e-signatures, and
+    document sharing, and full REST API access.
+  entries:
+  - label: Base Subscription
+    name: base_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '54.90'
+    userMultiplied: false
+  - label: Additional Practitioner
+    name: additional_practitioner
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '20.00'
+    userMultiplied: true
+  elements:
+  - name: Unlimited Form Templates
+  - name: E-Signatures
+  - name: Document Sharing
+  - name: REST API Access
+- id: intakeq-practice-management-low-volume
+  name: Practice Management - Low Volume
+  type: paid
+  description: >-
+    Discounted PracticeQ plan capped at roughly 25 appointments plus 25 client
+    form submissions per 30-day period per practitioner. Adds scheduling,
+    payments, and practice-management tools on top of the Forms Only features.
+  entries:
+  - label: Base Subscription
+    name: base_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '59.90'
+    userMultiplied: false
+  - label: Additional Practitioner
+    name: additional_practitioner
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '25.00'
+    userMultiplied: true
+  elements:
+  - name: All Forms Only Features
+  - name: Appointment Scheduling
+  - name: Client Portal
+  - name: Payments and Invoicing
+  - name: REST API Access
+- id: intakeq-practice-management
+  name: Practice Management (PracticeQ)
+  type: paid
+  description: >-
+    Standard PracticeQ plan. Includes all Forms Only features plus appointment
+    management, booking widget, secure client portal, payments and invoicing,
+    telehealth, treatment notes, and insurance billing.
+  entries:
+  - label: Base Subscription
+    name: base_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '84.90'
+    userMultiplied: false
+  - label: Additional Practitioner
+    name: additional_practitioner
+    type: flat
+    metric: seat
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '30.00'
+    userMultiplied: true
+  elements:
+  - name: All Forms Only Features
+  - name: Appointment Management and Booking Widget
+  - name: Secure Client Portal
+  - name: Payments and Invoicing
+  - name: Telehealth
+  - name: Treatment Notes
+  - name: Insurance Billing
+  - name: REST API Access
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,118 @@
+aid: intakeq
+name: IntakeQ
+review:
+  question: Does IntakeQ expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. IntakeQ's public developer surface is a
+    request/response REST API under https://intakeq.com/api/v1, authenticated
+    with an X-Auth-Key header. IntakeQ does provide event delivery, but it is
+    implemented as outbound HTTP webhooks (intake completed, note locked, and
+    invoice lifecycle events) configured in the API settings - server-to-endpoint
+    HTTP POSTs, not a bidirectional WebSocket transport. There is no ws:// or
+    wss:// endpoint documented to model.
+findings:
+  summary: |
+    IntakeQ does not publish a documented public WebSocket API. IntakeQ (and its
+    PracticeQ practice-management tier) is a HIPAA-compliant platform for health
+    and wellness practitioners. Its public API is pure request/response REST over
+    HTTPS with a base URL of https://intakeq.com/api/v1, and every request carries
+    the account API key in an X-Auth-Key header. The documented surface covers
+    clients, appointments, intake questionnaires and consent forms, treatment
+    notes, invoices, and file attachments. Asynchronous notifications are
+    delivered via outbound HTTP webhooks (configured in the API settings), not a
+    WebSocket. No realtime, bidirectional, or streaming WebSocket (ws:// or
+    wss://) endpoint is documented on IntakeQ's API as of the review date.
+  openSource: |
+    IntakeQ is a proprietary, closed-source hosted SaaS product. There is no
+    self-hostable engine and no public source repository for the platform. No
+    official IntakeQ GitHub organization was identified during the review; the
+    API is consumed entirely against the hosted https://intakeq.com/api/v1
+    endpoints.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://intakeq.com/api/v1
+      documented: true
+      note: The entire public API. API-key auth via the X-Auth-Key header.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: >-
+        Outbound HTTP POST callbacks configured in API settings - intake
+        completed, note locked, and invoice events (InvoiceIssued, InvoicePaid,
+        InvoicePaymentPlanChargeFailed, InvoiceAutoChargeFailed, InvoiceCancelled,
+        InvoicePaymentRefunded). Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in IntakeQ's API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://intakeq.com/api/v1/clients
+    - POST   https://intakeq.com/api/v1/clients
+    - POST   https://intakeq.com/api/v1/clientTags
+    - DELETE https://intakeq.com/api/v1/clientTags
+    - GET    https://intakeq.com/api/v1/client/{clientId}/diagnoses
+    - GET    https://intakeq.com/api/v1/appointments
+    - POST   https://intakeq.com/api/v1/appointments
+    - PUT    https://intakeq.com/api/v1/appointments
+    - GET    https://intakeq.com/api/v1/appointments/{appointmentId}
+    - GET    https://intakeq.com/api/v1/appointments/settings
+    - POST   https://intakeq.com/api/v1/appointments/cancellation
+    - GET    https://intakeq.com/api/v1/intakes/summary
+    - GET    https://intakeq.com/api/v1/intakes/{intakeId}
+    - GET    https://intakeq.com/api/v1/intakes/{intakeId}/pdf
+    - GET    https://intakeq.com/api/v1/intakes/{intakeId}/consent/{consentFormId}/pdf
+    - POST   https://intakeq.com/api/v1/intakes/send
+    - POST   https://intakeq.com/api/v1/intakes/resend
+    - POST   https://intakeq.com/api/v1/intakes
+    - GET    https://intakeq.com/api/v1/questionnaires
+    - GET    https://intakeq.com/api/v1/practitioners
+    - GET    https://intakeq.com/api/v1/notes/summary
+    - GET    https://intakeq.com/api/v1/notes/{noteId}
+    - GET    https://intakeq.com/api/v1/notes/{noteId}/pdf
+    - GET    https://intakeq.com/api/v1/invoices
+    - GET    https://intakeq.com/api/v1/invoices/{invoiceId}
+    - GET    https://intakeq.com/api/v1/files
+    - GET    https://intakeq.com/api/v1/folders
+    - GET    https://intakeq.com/api/v1/files/{fileId}
+    - POST   https://intakeq.com/api/v1/files/{clientId}
+    - DELETE https://intakeq.com/api/v1/files/{fileId}
+  endpointsModeled: []
+sources:
+  - url: https://support.intakeq.com/category/560-api
+    type: Documentation
+    note: API documentation index. All REST under https://intakeq.com/api/v1 with X-Auth-Key auth. No WebSocket mentioned.
+  - url: https://support.intakeq.com/article/251-intakeq-client-api
+    type: APIReference
+    note: Clients CRUD, client tags, and diagnoses. Documents 10 req/min, 500/day rate limit.
+  - url: https://support.intakeq.com/article/204-intakeq-appointments-api
+    type: APIReference
+    note: Appointments query/get/create/update/cancel and booking settings.
+  - url: https://support.intakeq.com/article/31-intakeq-api
+    type: APIReference
+    note: Intake questionnaires, consent-form PDFs, send/resend, templates, practitioners. Webhook on intake completion.
+  - url: https://support.intakeq.com/article/342-intakeq-notes-api
+    type: APIReference
+    note: Treatment notes query/get/PDF. Note-locked webhook.
+  - url: https://support.intakeq.com/article/385-intakeq-invoice-api
+    type: APIReference
+    note: Invoice query and get. Invoice-events webhook.
+  - url: https://support.intakeq.com/article/430-intakeq-files-api
+    type: APIReference
+    note: Client files list/download/upload/delete and folders.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. IntakeQ's public API is request/response
+    REST (https://intakeq.com/api/v1, X-Auth-Key auth). Asynchronous events are
+    delivered via outbound HTTP webhooks, not a server-push WebSocket, so no
+    AsyncAPI document was created - there is no bidirectional/streaming transport
+    on IntakeQ's own API to model.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

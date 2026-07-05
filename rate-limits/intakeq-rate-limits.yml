@@ -1,0 +1,65 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: IntakeQ
+providerId: intakeq
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Practice Management
+- Health and Wellness
+- Rate Limiting
+- Quotas
+description: >-
+  IntakeQ publishes a fixed API rate limit that applies across the REST API. The
+  standard subscription includes 10 API requests per minute with a maximum of
+  500 requests per day. Higher thresholds are available on request / upgrade.
+  Several list endpoints (clients, invoices) additionally cap responses at 100
+  records per page and require pagination via the `page` parameter to retrieve
+  larger result sets.
+notes: >-
+  The 10 requests/minute and 500/day limits are documented consistently across
+  the Client, Appointments, Questionnaire, Notes, and Files API reference pages.
+  Contact IntakeQ / PracticeQ support to request a higher threshold. Verify
+  current numbers on the API reference during reconciliation.
+sources:
+- https://support.intakeq.com/article/251-intakeq-client-api
+- https://support.intakeq.com/article/204-intakeq-appointments-api
+- https://support.intakeq.com/article/31-intakeq-api
+- https://support.intakeq.com/article/430-intakeq-files-api
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Minute
+  scope: account
+  metric: requests
+  limit: 10
+  timeFrame: minute
+  notes: Standard subscription. Higher thresholds available on request.
+- name: Requests Per Day
+  scope: account
+  metric: requests
+  limit: 500
+  timeFrame: day
+  notes: Standard subscription. Higher thresholds available on request.
+- name: Clients Page Size
+  scope: endpoint
+  metric: records
+  limit: 100
+  notes: The /clients endpoint returns a maximum of 100 records per page; use `page` to paginate.
+- name: Invoices Page Size
+  scope: endpoint
+  metric: records
+  limit: 100
+  notes: The /invoices endpoint returns a maximum of 100 records per request; use `page` to paginate.
+policies:
+- name: Backoff Strategy
+  description: Clients should stay under 10 requests/minute and 500/day, and back off with retries when a 429 is returned.
+- name: Threshold Increases
+  description: Accounts needing more throughput can request higher rate-limit thresholds from IntakeQ / PracticeQ support.
+- name: Pagination
+  description: Use the `page` query parameter to page through large result sets since list endpoints cap at 100 records.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
