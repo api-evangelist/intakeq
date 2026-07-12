@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/intakeq-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: authKey
+  type: apiKey
+  in: header
+  parameter: X-Auth-Key
+  description: The account API key found under More > Settings > Integrations > Developer API.
+  sources:
+  - openapi/intakeq-openapi.yml
