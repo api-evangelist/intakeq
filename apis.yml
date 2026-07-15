@@ -167,6 +167,8 @@ apis:
     ID, upload a new file to a client's record, and delete a file. Used to move
     documents and attachments in and out of a client's secure file repository.
 common:
+- type: AgenticAccess
+  url: agentic-access/intakeq-agentic-access.yml
 - type: DomainSecurity
   url: security/intakeq-domain-security.yml
 - type: Authentication
