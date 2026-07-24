@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: IntakeQ Appointments Files API
+  description: The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.
+  version: '1.0'
+  contact:
+    name: IntakeQ
+    url: https://intakeq.com
+servers:
+- url: https://intakeq.com/api/v1
+  description: IntakeQ production API
+security:
+- authKey: []
+tags:
+- name: Files
+  description: Client file attachments and folders.
+paths:
+  /files:
+    get:
+      operationId: getClientFiles
+      tags:
+      - Files
+      summary: Get a client's files
+      parameters:
+      - name: clientId
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of the client's files.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/File'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /folders:
+    get:
+      operationId: getFolders
+      tags:
+      - Files
+      summary: Get folders
+      responses:
+        '200':
+          description: A list of folders.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /files/{fileId}:
+    get:
+      operationId: downloadFile
+      tags:
+      - Files
+      summary: Download a file
+      parameters:
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The file contents.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteFile
+      tags:
+      - Files
+      summary: Delete a file
+      parameters:
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The file was deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /files/{clientId}:
+    post:
+      operationId: uploadFile
+      tags:
+      - Files
+      summary: Upload a file to a client's record
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: The uploaded file.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    File:
+      type: object
+      properties:
+        Id:
+          type: string
+        FileName:
+          type: string
+        ContentType:
+          type: string
+        DateCreated:
+          type: integer
+      additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-Auth-Key.
+  securitySchemes:
+    authKey:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+      description: The account API key found under More > Settings > Integrations > Developer API.

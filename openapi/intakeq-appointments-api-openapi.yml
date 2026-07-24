@@ -1,0 +1,288 @@
+openapi: 3.0.3
+info:
+  title: IntakeQ Appointments API
+  description: The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.
+  version: '1.0'
+  contact:
+    name: IntakeQ
+    url: https://intakeq.com
+servers:
+- url: https://intakeq.com/api/v1
+  description: IntakeQ production API
+security:
+- authKey: []
+tags:
+- name: Appointments
+  description: Appointments, booking settings, and cancellation.
+paths:
+  /appointments:
+    get:
+      operationId: queryAppointments
+      tags:
+      - Appointments
+      summary: Query appointments
+      parameters:
+      - name: client
+        in: query
+        description: Client name, email, or ID to filter by.
+        schema:
+          type: string
+      - name: startDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: practitionerEmail
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: updatedSince
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: deletedOnly
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: A list of appointments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      operationId: createAppointment
+      tags:
+      - Appointments
+      summary: Create an appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentCreate'
+      responses:
+        '200':
+          description: The created appointment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      operationId: updateAppointment
+      tags:
+      - Appointments
+      summary: Update an appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentUpdate'
+      responses:
+        '200':
+          description: The updated appointment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /appointments/{appointmentId}:
+    get:
+      operationId: getAppointment
+      tags:
+      - Appointments
+      summary: Retrieve a single appointment
+      parameters:
+      - name: appointmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The appointment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /appointments/settings:
+    get:
+      operationId: getBookingSettings
+      tags:
+      - Appointments
+      summary: Retrieve booking settings
+      description: Returns the account's services, locations, and practitioners.
+      responses:
+        '200':
+          description: Booking settings.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Services:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  Locations:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  Practitioners:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Practitioner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /appointments/cancellation:
+    post:
+      operationId: cancelAppointment
+      tags:
+      - Appointments
+      summary: Cancel an appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - AppointmentId
+              properties:
+                AppointmentId:
+                  type: string
+                Reason:
+                  type: string
+      responses:
+        '200':
+          description: The appointment was cancelled.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
+    Unauthorized:
+      description: Missing or invalid X-Auth-Key.
+  schemas:
+    Practitioner:
+      type: object
+      properties:
+        Id:
+          type: string
+        CompleteName:
+          type: string
+        Email:
+          type: string
+      additionalProperties: true
+    AppointmentCreate:
+      type: object
+      required:
+      - PractitionerId
+      - ClientId
+      - ServiceId
+      - LocationId
+      - Status
+      - UtcDateTime
+      - SendClientEmailNotification
+      - ReminderType
+      properties:
+        PractitionerId:
+          type: string
+        ClientId:
+          type: integer
+        ServiceId:
+          type: string
+        LocationId:
+          type: string
+        Status:
+          type: string
+        UtcDateTime:
+          type: integer
+          description: Appointment time as a UTC Unix timestamp.
+        SendClientEmailNotification:
+          type: boolean
+        ReminderType:
+          type: string
+    Appointment:
+      type: object
+      properties:
+        Id:
+          type: string
+        ClientId:
+          type: integer
+        ClientName:
+          type: string
+        PractitionerId:
+          type: string
+        ServiceId:
+          type: string
+        ServiceName:
+          type: string
+        LocationId:
+          type: string
+        Status:
+          type: string
+        StartDate:
+          type: integer
+          description: Unix timestamp (ms) of the appointment start.
+        Duration:
+          type: integer
+        Price:
+          type: number
+      additionalProperties: true
+    AppointmentUpdate:
+      type: object
+      required:
+      - Id
+      - UtcDateTime
+      properties:
+        Id:
+          type: string
+        UtcDateTime:
+          type: integer
+        ServiceId:
+          type: string
+        LocationId:
+          type: string
+        Status:
+          type: string
+        SendClientEmailNotification:
+          type: boolean
+        ReminderType:
+          type: string
+  securitySchemes:
+    authKey:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+      description: The account API key found under More > Settings > Integrations > Developer API.

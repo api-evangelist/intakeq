@@ -1,0 +1,250 @@
+openapi: 3.0.3
+info:
+  title: IntakeQ Appointments Intake Forms API
+  description: The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.
+  version: '1.0'
+  contact:
+    name: IntakeQ
+    url: https://intakeq.com
+servers:
+- url: https://intakeq.com/api/v1
+  description: IntakeQ production API
+security:
+- authKey: []
+tags:
+- name: Intake Forms
+  description: Intake questionnaires, consent forms, templates, and practitioners.
+paths:
+  /intakes/summary:
+    get:
+      operationId: queryIntakes
+      tags:
+      - Intake Forms
+      summary: Query intake form summaries
+      parameters:
+      - name: client
+        in: query
+        schema:
+          type: string
+      - name: startDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of intake summaries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IntakeSummary'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /intakes/{intakeId}:
+    get:
+      operationId: getIntake
+      tags:
+      - Intake Forms
+      summary: Retrieve a complete intake form
+      parameters:
+      - name: intakeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The full intake form as JSON.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /intakes/{intakeId}/pdf:
+    get:
+      operationId: downloadIntakePdf
+      tags:
+      - Intake Forms
+      summary: Download an intake package as PDF
+      parameters:
+      - name: intakeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The intake package PDF.
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /intakes/{intakeId}/consent/{consentFormId}/pdf:
+    get:
+      operationId: downloadConsentPdf
+      tags:
+      - Intake Forms
+      summary: Download a single consent form as PDF
+      parameters:
+      - name: intakeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: consentFormId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The consent form PDF.
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /intakes/send:
+    post:
+      operationId: sendIntake
+      tags:
+      - Intake Forms
+      summary: Send an intake questionnaire to a client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: The questionnaire was sent.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /intakes/resend:
+    post:
+      operationId: resendIntake
+      tags:
+      - Intake Forms
+      summary: Resend a previously sent intake
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: The questionnaire was resent.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /intakes:
+    post:
+      operationId: updateIntakeOfficeAnswers
+      tags:
+      - Intake Forms
+      summary: Update office-use-only answers on an intake
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: The intake was updated.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /questionnaires:
+    get:
+      operationId: listQuestionnaires
+      tags:
+      - Intake Forms
+      summary: List questionnaire templates
+      responses:
+        '200':
+          description: A list of questionnaire templates.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /practitioners:
+    get:
+      operationId: listPractitioners
+      tags:
+      - Intake Forms
+      summary: List account practitioners
+      responses:
+        '200':
+          description: A list of practitioners.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Practitioner'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-Auth-Key.
+  schemas:
+    Practitioner:
+      type: object
+      properties:
+        Id:
+          type: string
+        CompleteName:
+          type: string
+        Email:
+          type: string
+      additionalProperties: true
+    IntakeSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+        ClientName:
+          type: string
+        ClientId:
+          type: integer
+        DateCreated:
+          type: integer
+        Status:
+          type: string
+        QuestionnaireName:
+          type: string
+      additionalProperties: true
+  securitySchemes:
+    authKey:
+      type: apiKey
+      in: header
+      name: X-Auth-Key
+      description: The account API key found under More > Settings > Integrations > Developer API.
