@@ -11,7 +11,20 @@ description: IntakeQ is a HIPAA-compliant practice management platform for healt
   https://intakeq.com/api/v1 authenticated with an X-Auth-Key header, covering
   clients, appointments, intake questionnaires, treatment notes, invoices, and file
   attachments, plus webhooks for intake completion, note locking, and invoice events.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: open
+  trial: true
+  try_now: true
+  public: true
+  label: Paid (free trial) · Open access
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/intakeq.png
 tags:
 - Practice Management
 - Intake Forms
@@ -24,148 +37,174 @@ created: '2026-07-05'
 modified: '2026-07-05'
 specificationVersion: '0.19'
 apis:
-- aid: intakeq:intakeq-clients-api
-  name: IntakeQ Clients API
-  tags:
-  - Clients
-  - Patients
-  - CRM
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
-  baseURL: https://intakeq.com/api/v1
-  properties:
-  - url: https://support.intakeq.com/article/251-intakeq-client-api
-    type: APIReference
-  - url: https://support.intakeq.com/category/560-api
-    type: Documentation
-  - url: openapi/intakeq-openapi.yml
-    type: OpenAPI
-  - url: collections/intakeq.postman_collection.json
-    type: PostmanCollection
-  - url: collections/intakeq.opencollection.json
-    type: OpenCollection
-  description: Query, create, and update clients (patients) in an IntakeQ account,
-    search by name, email, client ID, custom fields, external ID, or created/updated
-    date ranges, add and remove client tags, and retrieve a client's diagnoses.
 - aid: intakeq:intakeq-appointments-api
   name: IntakeQ Appointments API
+  description: Appointments, booking settings, and cancellation.
+  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
+  baseURL: https://intakeq.com/api/v1
   tags:
   - Appointments
-  - Scheduling
-  - Booking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://support.intakeq.com/article/204-intakeq-appointments-api
-  baseURL: https://intakeq.com/api/v1
   properties:
-  - url: https://support.intakeq.com/article/204-intakeq-appointments-api
-    type: APIReference
-  - url: https://support.intakeq.com/category/560-api
-    type: Documentation
-  - url: openapi/intakeq-openapi.yml
-    type: OpenAPI
-  - url: collections/intakeq.postman_collection.json
-    type: PostmanCollection
-  - url: collections/intakeq.opencollection.json
-    type: OpenCollection
-  description: Query appointments by client, date range, status, or practitioner,
-    retrieve a single appointment, read booking settings (services, locations,
-    practitioners), and create, update, or cancel appointments in the PracticeQ
-    scheduler.
-- aid: intakeq:intakeq-intake-forms-api
-  name: IntakeQ Intake Forms API
+  - type: OpenAPI
+    url: openapi/intakeq-appointments-api-openapi.yml
+  - type: APIReference
+    url: https://support.intakeq.com/article/251-intakeq-client-api
+  - type: Documentation
+    url: https://support.intakeq.com/category/560-api
+  - type: PostmanCollection
+    url: collections/intakeq.postman_collection.json
+  - type: OpenCollection
+    url: collections/intakeq.opencollection.json
+  - type: APIReference
+    url: https://support.intakeq.com/article/204-intakeq-appointments-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/31-intakeq-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/342-intakeq-notes-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/385-intakeq-invoice-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/430-intakeq-files-api
+- aid: intakeq:intakeq-clients-api
+  name: IntakeQ Clients API
+  description: Clients (patients), tags, and diagnoses.
+  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
+  baseURL: https://intakeq.com/api/v1
   tags:
-  - Intake Forms
-  - Questionnaires
-  - Consent Forms
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://support.intakeq.com/article/31-intakeq-api
-  baseURL: https://intakeq.com/api/v1
+  - Clients
   properties:
-  - url: https://support.intakeq.com/article/31-intakeq-api
-    type: APIReference
-  - url: https://support.intakeq.com/category/560-api
-    type: Documentation
-  - url: openapi/intakeq-openapi.yml
-    type: OpenAPI
-  - url: collections/intakeq.postman_collection.json
-    type: PostmanCollection
-  - url: collections/intakeq.opencollection.json
-    type: OpenCollection
-  description: Query intake form summaries, retrieve a completed intake as JSON or
-    download it as a PDF (including individual consent forms), send or resend a
-    questionnaire to a client, update office-use-only answers, and list available
-    questionnaire templates and account practitioners.
-- aid: intakeq:intakeq-treatment-notes-api
-  name: IntakeQ Treatment Notes API
-  tags:
-  - Treatment Notes
-  - Clinical Documentation
-  - SOAP Notes
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://support.intakeq.com/article/342-intakeq-notes-api
-  baseURL: https://intakeq.com/api/v1
-  properties:
-  - url: https://support.intakeq.com/article/342-intakeq-notes-api
-    type: APIReference
-  - url: https://support.intakeq.com/category/560-api
-    type: Documentation
-  - url: openapi/intakeq-openapi.yml
-    type: OpenAPI
-  - url: collections/intakeq.postman_collection.json
-    type: PostmanCollection
-  - url: collections/intakeq.opencollection.json
-    type: OpenCollection
-  description: Query treatment note summaries by client, status, or date range,
-    retrieve the full JSON of a locked treatment note, and download a treatment
-    note as a PDF. A note-locked webhook notifies external systems when staff lock
-    a note.
-- aid: intakeq:intakeq-invoices-api
-  name: IntakeQ Invoices API
-  tags:
-  - Invoices
-  - Billing
-  - Payments
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://support.intakeq.com/article/385-intakeq-invoice-api
-  baseURL: https://intakeq.com/api/v1
-  properties:
-  - url: https://support.intakeq.com/article/385-intakeq-invoice-api
-    type: APIReference
-  - url: https://support.intakeq.com/category/560-api
-    type: Documentation
-  - url: openapi/intakeq-openapi.yml
-    type: OpenAPI
-  - url: collections/intakeq.postman_collection.json
-    type: PostmanCollection
-  - url: collections/intakeq.opencollection.json
-    type: OpenCollection
-  description: Query invoices by client, date range, status, practitioner, or invoice
-    number, and retrieve a single invoice by ID. An invoice-events webhook fires on
-    issue, payment, refund, cancellation, and failed auto-charge or payment-plan
-    charge events.
+  - type: OpenAPI
+    url: openapi/intakeq-clients-api-openapi.yml
+  - type: APIReference
+    url: https://support.intakeq.com/article/251-intakeq-client-api
+  - type: Documentation
+    url: https://support.intakeq.com/category/560-api
+  - type: PostmanCollection
+    url: collections/intakeq.postman_collection.json
+  - type: OpenCollection
+    url: collections/intakeq.opencollection.json
+  - type: APIReference
+    url: https://support.intakeq.com/article/204-intakeq-appointments-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/31-intakeq-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/342-intakeq-notes-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/385-intakeq-invoice-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/430-intakeq-files-api
 - aid: intakeq:intakeq-files-api
   name: IntakeQ Files API
+  description: Client file attachments and folders.
+  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
+  baseURL: https://intakeq.com/api/v1
   tags:
   - Files
-  - Attachments
-  - Documents
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://support.intakeq.com/article/430-intakeq-files-api
-  baseURL: https://intakeq.com/api/v1
   properties:
-  - url: https://support.intakeq.com/article/430-intakeq-files-api
-    type: APIReference
-  - url: https://support.intakeq.com/category/560-api
-    type: Documentation
-  - url: openapi/intakeq-openapi.yml
-    type: OpenAPI
-  - url: collections/intakeq.postman_collection.json
-    type: PostmanCollection
-  - url: collections/intakeq.opencollection.json
-    type: OpenCollection
-  description: List a client's files and the account's folders, download a file by
-    ID, upload a new file to a client's record, and delete a file. Used to move
-    documents and attachments in and out of a client's secure file repository.
+  - type: OpenAPI
+    url: openapi/intakeq-files-api-openapi.yml
+  - type: APIReference
+    url: https://support.intakeq.com/article/251-intakeq-client-api
+  - type: Documentation
+    url: https://support.intakeq.com/category/560-api
+  - type: PostmanCollection
+    url: collections/intakeq.postman_collection.json
+  - type: OpenCollection
+    url: collections/intakeq.opencollection.json
+  - type: APIReference
+    url: https://support.intakeq.com/article/204-intakeq-appointments-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/31-intakeq-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/342-intakeq-notes-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/385-intakeq-invoice-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/430-intakeq-files-api
+- aid: intakeq:intakeq-intake-forms-api
+  name: IntakeQ Intake Forms API
+  description: Intake questionnaires, consent forms, templates, and practitioners.
+  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
+  baseURL: https://intakeq.com/api/v1
+  tags:
+  - Intake Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/intakeq-intake-forms-api-openapi.yml
+  - type: APIReference
+    url: https://support.intakeq.com/article/251-intakeq-client-api
+  - type: Documentation
+    url: https://support.intakeq.com/category/560-api
+  - type: PostmanCollection
+    url: collections/intakeq.postman_collection.json
+  - type: OpenCollection
+    url: collections/intakeq.opencollection.json
+  - type: APIReference
+    url: https://support.intakeq.com/article/204-intakeq-appointments-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/31-intakeq-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/342-intakeq-notes-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/385-intakeq-invoice-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/430-intakeq-files-api
+- aid: intakeq:intakeq-invoices-api
+  name: IntakeQ Invoices API
+  description: Invoice query and retrieval.
+  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
+  baseURL: https://intakeq.com/api/v1
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/intakeq-invoices-api-openapi.yml
+  - type: APIReference
+    url: https://support.intakeq.com/article/251-intakeq-client-api
+  - type: Documentation
+    url: https://support.intakeq.com/category/560-api
+  - type: PostmanCollection
+    url: collections/intakeq.postman_collection.json
+  - type: OpenCollection
+    url: collections/intakeq.opencollection.json
+  - type: APIReference
+    url: https://support.intakeq.com/article/204-intakeq-appointments-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/31-intakeq-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/342-intakeq-notes-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/385-intakeq-invoice-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/430-intakeq-files-api
+- aid: intakeq:intakeq-treatment-notes-api
+  name: IntakeQ Treatment Notes API
+  description: Treatment / clinical notes and PDF export.
+  humanURL: https://support.intakeq.com/article/251-intakeq-client-api
+  baseURL: https://intakeq.com/api/v1
+  tags:
+  - Treatment Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/intakeq-treatment-notes-api-openapi.yml
+  - type: APIReference
+    url: https://support.intakeq.com/article/251-intakeq-client-api
+  - type: Documentation
+    url: https://support.intakeq.com/category/560-api
+  - type: PostmanCollection
+    url: collections/intakeq.postman_collection.json
+  - type: OpenCollection
+    url: collections/intakeq.opencollection.json
+  - type: APIReference
+    url: https://support.intakeq.com/article/204-intakeq-appointments-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/31-intakeq-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/342-intakeq-notes-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/385-intakeq-invoice-api
+  - type: APIReference
+    url: https://support.intakeq.com/article/430-intakeq-files-api
 common:
 - type: AgenticAccess
   url: agentic-access/intakeq-agentic-access.yml
