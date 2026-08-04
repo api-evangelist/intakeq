@@ -1,0 +1,24 @@
+{
+  "provider": "intakeq",
+  "sources": [
+    "intakeq-appointments-api-openapi.yml",
+    "intakeq-clients-api-openapi.yml",
+    "intakeq-files-api-openapi.yml",
+    "intakeq-intake-forms-api-openapi.yml",
+    "intakeq-invoices-api-openapi.yml",
+    "intakeq-treatment-notes-api-openapi.yml"
+  ],
+  "outputs": [
+    "intakeq-appointments-api-openapi.yml",
+    "intakeq-clients-api-openapi.yml",
+    "intakeq-files-api-openapi.yml",
+    "intakeq-intake-forms-api-openapi.yml",
+    "intakeq-invoices-api-openapi.yml",
+    "intakeq-treatment-notes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
