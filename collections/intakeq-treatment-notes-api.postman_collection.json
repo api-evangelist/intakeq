@@ -1,0 +1,558 @@
+{
+  "item": [
+    {
+      "id": "4ee5e78c-bba6-4b1c-a499-9a03050e40a7",
+      "name": "Treatment Notes",
+      "description": {
+        "content": "Treatment / clinical notes and PDF export.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90ad590c-f992-48df-ab62-bfb607196f98",
+          "name": "Query treatment note summaries",
+          "request": {
+            "name": "Query treatment note summaries",
+            "description": {},
+            "url": {
+              "path": [
+                "notes",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "clientId",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedSince",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "deletedOnly",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d8a7502-9401-4023-a955-94928ae997de",
+              "name": "A list of treatment note summaries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Id\": \"string\",\n    \"ClientName\": \"string\",\n    \"ClientId\": 521,\n    \"Status\": 1669,\n    \"Date\": 1528,\n    \"NoteName\": \"string\"\n  },\n  {\n    \"Id\": \"string\",\n    \"ClientName\": \"string\",\n    \"ClientId\": 6090,\n    \"Status\": 3786,\n    \"Date\": 689,\n    \"NoteName\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a32ed5e8-99aa-4ee1-9aef-f393aec215be",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "328b99a1-f3ce-425c-8670-18b2edeec1e9",
+          "name": "Retrieve a full treatment note",
+          "request": {
+            "name": "Retrieve a full treatment note",
+            "description": {},
+            "url": {
+              "path": [
+                "notes",
+                ":noteId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "noteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3abe1e70-62c5-4125-afc9-b18369d4bdb2",
+              "name": "The full treatment note as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":noteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "noteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0896939f-cdfc-4775-a4e4-0986f00665de",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":noteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "noteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff29960c-b036-4892-97df-11263e37cff8",
+          "name": "Download a treatment note as PDF",
+          "request": {
+            "name": "Download a treatment note as PDF",
+            "description": {},
+            "url": {
+              "path": [
+                "notes",
+                ":noteId",
+                "pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "noteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "319cafac-e8c8-4852-affb-b01266fad468",
+              "name": "The treatment note PDF.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":noteId",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "noteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d6ff55a-9ff5-43d4-95fa-7784db38e1f2",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notes",
+                    ":noteId",
+                    "pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "noteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://intakeq.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Auth-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f6d37f97-0e25-49a6-b270-272bc9e9d0ba",
+    "name": "IntakeQ Appointments Treatment Notes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.\n\nContact Support:\n Name: IntakeQ",
+      "type": "text/plain"
+    }
+  }
+}

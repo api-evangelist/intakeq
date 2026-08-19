@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IntakeQ Appointments Clients API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Key",
+      "value": "{{X-Auth-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/clients",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Name, email, or numeric client ID to search for."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (max 100 records per page)."
+              },
+              {
+                "name": "includeProfile",
+                "value": "",
+                "type": "query",
+                "description": "Set to 'true' to include the full client profile."
+              },
+              {
+                "name": "dateCreatedStart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateCreatedEnd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateUpdatedStart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateUpdatedEnd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "externalClientId",
+                "value": "",
+                "type": "query",
+                "description": "Search by external client ID."
+              },
+              {
+                "name": "deletedOnly",
+                "value": "",
+                "type": "query",
+                "description": "Return only deleted clients (retrievable within 10 days of deletion)."
+              }
+            ]
+          },
+          "docs": "Returns a list of clients. Filter with the query parameters below. Returns a maximum of 100 records per page."
+        },
+        {
+          "info": {
+            "name": "Save or update a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/clients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new client or updates an existing one. Include `ClientId` in the body to update an existing client; omit it to create a new client."
+        },
+        {
+          "info": {
+            "name": "Add a tag to a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/clientTags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a tag to a client"
+        },
+        {
+          "info": {
+            "name": "Remove a tag from a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://intakeq.com/api/v1/clientTags",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Remove a tag from a client"
+        },
+        {
+          "info": {
+            "name": "Query a client's diagnoses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/client/:clientId/diagnoses",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Query a client's diagnoses"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

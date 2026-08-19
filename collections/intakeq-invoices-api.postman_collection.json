@@ -1,0 +1,427 @@
+{
+  "item": [
+    {
+      "id": "cb20ea3b-1e71-4d24-9795-a4793c43ecb9",
+      "name": "Invoices",
+      "description": {
+        "content": "Invoice query and retrieval.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "faae2faf-e4b1-418a-ab8a-d4bd1008b129",
+          "name": "Query invoices",
+          "request": {
+            "name": "Query invoices",
+            "description": {
+              "content": "Returns a maximum of 100 records per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clientId",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "practitionerEmail",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastUpdatedStartDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastUpdatedEndDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4692df1-7ee9-47e9-809c-7c6fede9ed24",
+              "name": "A list of invoices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "practitionerEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastUpdatedStartDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "lastUpdatedEndDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Id\": \"string\",\n    \"Number\": \"string\",\n    \"ClientId\": 176,\n    \"ClientName\": \"string\",\n    \"Status\": \"string\",\n    \"TotalAmount\": 941.6539059298457,\n    \"AmountPaid\": 5340.076515717853,\n    \"Currency\": \"string\",\n    \"DateIssued\": 8876\n  },\n  {\n    \"Id\": \"string\",\n    \"Number\": \"string\",\n    \"ClientId\": 41,\n    \"ClientName\": \"string\",\n    \"Status\": \"string\",\n    \"TotalAmount\": 9193.07609954844,\n    \"AmountPaid\": 6564.6946172584485,\n    \"Currency\": \"string\",\n    \"DateIssued\": 682\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d0c2b46-e989-4538-877e-a07c885d0a61",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "practitionerEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "lastUpdatedStartDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "lastUpdatedEndDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bce82853-bb8e-46de-8ca7-3698b1280d64",
+          "name": "Retrieve a single invoice",
+          "request": {
+            "name": "Retrieve a single invoice",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bf8fa5d-af87-4a66-a7f8-eab854946504",
+              "name": "The invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"Number\": \"string\",\n  \"ClientId\": 5334,\n  \"ClientName\": \"string\",\n  \"Status\": \"string\",\n  \"TotalAmount\": 7820.197086019051,\n  \"AmountPaid\": 6063.850735643038,\n  \"Currency\": \"string\",\n  \"DateIssued\": 5748\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1215eff6-b76f-45ec-8454-9a95ca06752f",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://intakeq.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Auth-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "68561df2-bd6b-47c7-aa35-c17c2afedf00",
+    "name": "IntakeQ Appointments Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.\n\nContact Support:\n Name: IntakeQ",
+      "type": "text/plain"
+    }
+  }
+}

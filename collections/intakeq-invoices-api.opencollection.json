@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IntakeQ Appointments Invoices API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Key",
+      "value": "{{X-Auth-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/invoices",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "practitionerEmail",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastUpdatedStartDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastUpdatedEndDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a maximum of 100 records per request."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single invoice"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

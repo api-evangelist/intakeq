@@ -1,0 +1,974 @@
+{
+  "item": [
+    {
+      "id": "2fca362b-bf52-4398-a6d0-5014056d596a",
+      "name": "Clients",
+      "description": {
+        "content": "Clients (patients), tags, and diagnoses.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "495b39aa-8b6f-4669-8737-94e62eb1b438",
+          "name": "Query clients",
+          "request": {
+            "name": "Query clients",
+            "description": {
+              "content": "Returns a list of clients. Filter with the query parameters below. Returns a maximum of 100 records per page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Name, email, or numeric client ID to search for."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for pagination (max 100 records per page)."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeProfile",
+                  "value": "<boolean>",
+                  "description": "Set to 'true' to include the full client profile."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateCreatedStart",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateCreatedEnd",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdatedStart",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateUpdatedEnd",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "externalClientId",
+                  "value": "<string>",
+                  "description": "Search by external client ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "deletedOnly",
+                  "value": "<boolean>",
+                  "description": "Return only deleted clients (retrievable within 10 days of deletion)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00bd9371-34ff-4db2-97c8-08e2a99bcfa8",
+              "name": "A list of clients.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "includeProfile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dateCreatedStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateCreatedEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateUpdatedStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateUpdatedEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "externalClientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ClientId\": 6434,\n    \"Name\": \"string\",\n    \"FirstName\": \"string\",\n    \"LastName\": \"string\",\n    \"Email\": \"string\",\n    \"Phone\": \"string\",\n    \"DateOfBirth\": \"string\",\n    \"ExternalClientId\": \"string\",\n    \"Tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"Archived\": false\n  },\n  {\n    \"ClientId\": 9907,\n    \"Name\": \"string\",\n    \"FirstName\": \"string\",\n    \"LastName\": \"string\",\n    \"Email\": \"string\",\n    \"Phone\": \"string\",\n    \"DateOfBirth\": \"string\",\n    \"ExternalClientId\": \"string\",\n    \"Tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"Archived\": false,\n    \"key_0\": 259.7942431771827,\n    \"key_1\": 7523\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f113bea3-02a8-4bfa-8e3c-9bd5d8cc4e6c",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "includeProfile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dateCreatedStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateCreatedEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateUpdatedStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateUpdatedEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "externalClientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4fd1884-f65f-4ff9-b2fe-f226b4b8ef4f",
+              "name": "Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "includeProfile",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dateCreatedStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateCreatedEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateUpdatedStart",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateUpdatedEnd",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "externalClientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c03aff0a-960b-447f-a05a-9b45010d8ba6",
+          "name": "Save or update a client",
+          "request": {
+            "name": "Save or update a client",
+            "description": {
+              "content": "Creates a new client or updates an existing one. Include `ClientId` in the body to update an existing client; omit it to create a new client.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ClientId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"DateOfBirth\": \"<string>\",\n  \"ExternalClientId\": \"<string>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Archived\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d5d005c-8194-4617-897a-ff5fa4163a48",
+              "name": "The saved client.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ClientId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"DateOfBirth\": \"<string>\",\n  \"ExternalClientId\": \"<string>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ClientId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"DateOfBirth\": \"<string>\",\n  \"ExternalClientId\": \"<string>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Archived\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c98ff6ee-f66f-4ddc-9290-2676351f050e",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ClientId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"DateOfBirth\": \"<string>\",\n  \"ExternalClientId\": \"<string>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3e9b33c-6855-4ca0-baf1-03aa83730c8e",
+              "name": "Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ClientId\": \"<integer>\",\n  \"Name\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Email\": \"<string>\",\n  \"Phone\": \"<string>\",\n  \"DateOfBirth\": \"<string>\",\n  \"ExternalClientId\": \"<string>\",\n  \"Tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf3bd1c1-0f79-4496-91e4-cfc2c83cb5bd",
+          "name": "Add a tag to a client",
+          "request": {
+            "name": "Add a tag to a client",
+            "description": {},
+            "url": {
+              "path": [
+                "clientTags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ClientId\": \"<integer>\",\n  \"Tag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b02fde82-f2e4-4f6d-9004-75d8fb72dcda",
+              "name": "Tag added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clientTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ClientId\": \"<integer>\",\n  \"Tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc5ccd9a-e314-45c1-b4bb-18c2274d7c9c",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clientTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ClientId\": \"<integer>\",\n  \"Tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b451264f-c5c9-4910-8887-56d24f0e011c",
+          "name": "Remove a tag from a client",
+          "request": {
+            "name": "Remove a tag from a client",
+            "description": {},
+            "url": {
+              "path": [
+                "clientTags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clientId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31773c1a-4bfb-4b4c-b136-e5900e2b416c",
+              "name": "Tag removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clientTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c715d8c7-3dff-4f96-8c5b-4bf6b369e2f2",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clientTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fe00009-25e8-4210-a12e-83ad4636521c",
+          "name": "Query a client's diagnoses",
+          "request": {
+            "name": "Query a client's diagnoses",
+            "description": {},
+            "url": {
+              "path": [
+                "client",
+                ":clientId",
+                "diagnoses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8cc9d36-53b8-43c5-ae97-46e632221c00",
+              "name": "A list of diagnoses for the client.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "diagnoses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_0\": 8718.051574003659,\n    \"key_1\": 7509.305806851784\n  },\n  {\n    \"key_0\": 6353.968492853188,\n    \"key_1\": 1305\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed95ad69-2989-47d9-95d1-051efecb491a",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client",
+                    ":clientId",
+                    "diagnoses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://intakeq.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Auth-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "490fcc8c-7907-4137-b7c6-069508ed6c7a",
+    "name": "IntakeQ Appointments Clients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.\n\nContact Support:\n Name: IntakeQ",
+      "type": "text/plain"
+    }
+  }
+}

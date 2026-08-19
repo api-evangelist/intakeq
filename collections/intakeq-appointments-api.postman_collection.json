@@ -1,0 +1,1028 @@
+{
+  "item": [
+    {
+      "id": "48ce65d7-6e74-49c1-8373-c890b6bc0fa8",
+      "name": "Appointments",
+      "description": {
+        "content": "Appointments, booking settings, and cancellation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b5e750e-493e-4d7c-82ab-c572e6c8f080",
+          "name": "Query appointments",
+          "request": {
+            "name": "Query appointments",
+            "description": {},
+            "url": {
+              "path": [
+                "appointments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "<string>",
+                  "description": "Client name, email, or ID to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "practitionerEmail",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedSince",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "deletedOnly",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2bf0a6ea-16c2-4f62-a6b9-f6bc4bbcf18b",
+              "name": "A list of appointments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "practitionerEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Id\": \"string\",\n    \"ClientId\": 7846,\n    \"ClientName\": \"string\",\n    \"PractitionerId\": \"string\",\n    \"ServiceId\": \"string\",\n    \"ServiceName\": \"string\",\n    \"LocationId\": \"string\",\n    \"Status\": \"string\",\n    \"StartDate\": 7901,\n    \"Duration\": 9611,\n    \"Price\": 5965.715878001833\n  },\n  {\n    \"Id\": \"string\",\n    \"ClientId\": 465,\n    \"ClientName\": \"string\",\n    \"PractitionerId\": \"string\",\n    \"ServiceId\": \"string\",\n    \"ServiceName\": \"string\",\n    \"LocationId\": \"string\",\n    \"Status\": \"string\",\n    \"StartDate\": 8118,\n    \"Duration\": 5115,\n    \"Price\": 9071.320577228975\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3527e697-29d2-4907-b5bb-891961b90d18",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "practitionerEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82da1267-24cc-4449-a2ee-b408434c3c3c",
+              "name": "Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "practitionerEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "updatedSince",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "deletedOnly",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61d93604-ecd1-496a-b4af-718b611d7729",
+          "name": "Create an appointment",
+          "request": {
+            "name": "Create an appointment",
+            "description": {},
+            "url": {
+              "path": [
+                "appointments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"PractitionerId\": \"<string>\",\n  \"ClientId\": \"<integer>\",\n  \"ServiceId\": \"<string>\",\n  \"LocationId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"UtcDateTime\": \"<integer>\",\n  \"SendClientEmailNotification\": \"<boolean>\",\n  \"ReminderType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "585dfaa9-4951-42c0-a0bd-cffb028f6fee",
+              "name": "The created appointment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PractitionerId\": \"<string>\",\n  \"ClientId\": \"<integer>\",\n  \"ServiceId\": \"<string>\",\n  \"LocationId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"UtcDateTime\": \"<integer>\",\n  \"SendClientEmailNotification\": \"<boolean>\",\n  \"ReminderType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"ClientId\": 4733,\n  \"ClientName\": \"string\",\n  \"PractitionerId\": \"string\",\n  \"ServiceId\": \"string\",\n  \"ServiceName\": \"string\",\n  \"LocationId\": \"string\",\n  \"Status\": \"string\",\n  \"StartDate\": 3523,\n  \"Duration\": 5845,\n  \"Price\": 3216.4274008279735,\n  \"key_0\": 3686.770672051249,\n  \"key_1\": true,\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "056adb8c-8883-43c9-b16e-cff1961c3061",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"PractitionerId\": \"<string>\",\n  \"ClientId\": \"<integer>\",\n  \"ServiceId\": \"<string>\",\n  \"LocationId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"UtcDateTime\": \"<integer>\",\n  \"SendClientEmailNotification\": \"<boolean>\",\n  \"ReminderType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "083c96e8-c6a9-4b6b-aec5-4e5a77bd7439",
+          "name": "Update an appointment",
+          "request": {
+            "name": "Update an appointment",
+            "description": {},
+            "url": {
+              "path": [
+                "appointments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Id\": \"<string>\",\n  \"UtcDateTime\": \"<integer>\",\n  \"ServiceId\": \"<string>\",\n  \"LocationId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"SendClientEmailNotification\": \"<boolean>\",\n  \"ReminderType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31fb45a9-2fec-4899-90a8-1885b5f7239b",
+              "name": "The updated appointment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"<string>\",\n  \"UtcDateTime\": \"<integer>\",\n  \"ServiceId\": \"<string>\",\n  \"LocationId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"SendClientEmailNotification\": \"<boolean>\",\n  \"ReminderType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"ClientId\": 4733,\n  \"ClientName\": \"string\",\n  \"PractitionerId\": \"string\",\n  \"ServiceId\": \"string\",\n  \"ServiceName\": \"string\",\n  \"LocationId\": \"string\",\n  \"Status\": \"string\",\n  \"StartDate\": 3523,\n  \"Duration\": 5845,\n  \"Price\": 3216.4274008279735,\n  \"key_0\": 3686.770672051249,\n  \"key_1\": true,\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "102c2ba8-c461-4939-9b1c-e6bb8818f9a0",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Id\": \"<string>\",\n  \"UtcDateTime\": \"<integer>\",\n  \"ServiceId\": \"<string>\",\n  \"LocationId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"SendClientEmailNotification\": \"<boolean>\",\n  \"ReminderType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "196e5dde-7cf5-4ab9-b31e-629a1834bc68",
+          "name": "Retrieve a single appointment",
+          "request": {
+            "name": "Retrieve a single appointment",
+            "description": {},
+            "url": {
+              "path": [
+                "appointments",
+                ":appointmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appointmentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e09500e3-384c-4cfe-ab8d-56aa39a971a9",
+              "name": "The appointment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments",
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"string\",\n  \"ClientId\": 4733,\n  \"ClientName\": \"string\",\n  \"PractitionerId\": \"string\",\n  \"ServiceId\": \"string\",\n  \"ServiceName\": \"string\",\n  \"LocationId\": \"string\",\n  \"Status\": \"string\",\n  \"StartDate\": 3523,\n  \"Duration\": 5845,\n  \"Price\": 3216.4274008279735,\n  \"key_0\": 3686.770672051249,\n  \"key_1\": true,\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1b0f34d-76a9-4a25-9476-df7744b4f71e",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments",
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed9403ee-7007-4ee0-97c9-be81df93abfb",
+          "name": "Retrieve booking settings",
+          "request": {
+            "name": "Retrieve booking settings",
+            "description": {
+              "content": "Returns the account's services, locations, and practitioners.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "appointments",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a09f492-6103-4936-a3f0-28854ec16506",
+              "name": "Booking settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Services\": [\n    {\n      \"key_0\": false,\n      \"key_1\": 210.45157884846398\n    },\n    {\n      \"key_0\": 4233\n    }\n  ],\n  \"Locations\": [\n    {\n      \"key_0\": 7442,\n      \"key_1\": 6385\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 9511\n    }\n  ],\n  \"Practitioners\": [\n    {\n      \"Id\": \"string\",\n      \"CompleteName\": \"string\",\n      \"Email\": \"string\",\n      \"key_0\": false,\n      \"key_1\": true\n    },\n    {\n      \"Id\": \"string\",\n      \"CompleteName\": \"string\",\n      \"Email\": \"string\",\n      \"key_0\": 415.777030248754,\n      \"key_1\": 2921\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "607db935-aa7e-416b-a416-ec64e74013bc",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "772db8af-f3b4-4bcb-9707-c0d7a18f6790",
+          "name": "Cancel an appointment",
+          "request": {
+            "name": "Cancel an appointment",
+            "description": {},
+            "url": {
+              "path": [
+                "appointments",
+                "cancellation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AppointmentId\": \"<string>\",\n  \"Reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9273d05c-87eb-45ad-adaf-3e678a025a52",
+              "name": "The appointment was cancelled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments",
+                    "cancellation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AppointmentId\": \"<string>\",\n  \"Reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d8bf19f-4edc-4a6a-ab63-9d5905d3e9a9",
+              "name": "Missing or invalid X-Auth-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appointments",
+                    "cancellation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Auth-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AppointmentId\": \"<string>\",\n  \"Reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://intakeq.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Auth-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6eb30604-68c6-454b-9cfd-e126a93f5a1d",
+    "name": "IntakeQ Appointments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.\n\nContact Support:\n Name: IntakeQ",
+      "type": "text/plain"
+    }
+  }
+}

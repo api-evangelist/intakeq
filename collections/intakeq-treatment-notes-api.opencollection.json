@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IntakeQ Appointments Treatment Notes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Key",
+      "value": "{{X-Auth-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Treatment Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query treatment note summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/notes/summary",
+            "params": [
+              {
+                "name": "client",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updatedSince",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deletedOnly",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query treatment note summaries"
+        },
+        {
+          "info": {
+            "name": "Retrieve a full treatment note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/notes/:noteId",
+            "params": [
+              {
+                "name": "noteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a full treatment note"
+        },
+        {
+          "info": {
+            "name": "Download a treatment note as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/notes/:noteId/pdf",
+            "params": [
+              {
+                "name": "noteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a treatment note as PDF"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

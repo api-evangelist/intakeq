@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IntakeQ Appointments Files API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Key",
+      "value": "{{X-Auth-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a client's files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/files",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a client's files"
+        },
+        {
+          "info": {
+            "name": "Get folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/folders"
+          },
+          "docs": "Get folders"
+        },
+        {
+          "info": {
+            "name": "Download a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/files/:fileId",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a file"
+        },
+        {
+          "info": {
+            "name": "Delete a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://intakeq.com/api/v1/files/:fileId",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a file"
+        },
+        {
+          "info": {
+            "name": "Upload a file to a client's record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/files/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a file to a client's record"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

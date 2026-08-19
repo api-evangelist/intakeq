@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IntakeQ Appointments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Key",
+      "value": "{{X-Auth-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appointments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/appointments",
+            "params": [
+              {
+                "name": "client",
+                "value": "",
+                "type": "query",
+                "description": "Client name, email, or ID to filter by."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "practitionerEmail",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updatedSince",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deletedOnly",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query appointments"
+        },
+        {
+          "info": {
+            "name": "Create an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/appointments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an appointment"
+        },
+        {
+          "info": {
+            "name": "Update an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://intakeq.com/api/v1/appointments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an appointment"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/appointments/:appointmentId",
+            "params": [
+              {
+                "name": "appointmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single appointment"
+        },
+        {
+          "info": {
+            "name": "Retrieve booking settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/appointments/settings"
+          },
+          "docs": "Returns the account's services, locations, and practitioners."
+        },
+        {
+          "info": {
+            "name": "Cancel an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/appointments/cancellation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an appointment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

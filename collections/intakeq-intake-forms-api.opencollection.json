@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IntakeQ Appointments Intake Forms API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Auth-Key",
+      "value": "{{X-Auth-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Intake Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query intake form summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/summary",
+            "params": [
+              {
+                "name": "client",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query intake form summaries"
+        },
+        {
+          "info": {
+            "name": "Retrieve a complete intake form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/:intakeId",
+            "params": [
+              {
+                "name": "intakeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a complete intake form"
+        },
+        {
+          "info": {
+            "name": "Download an intake package as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/:intakeId/pdf",
+            "params": [
+              {
+                "name": "intakeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download an intake package as PDF"
+        },
+        {
+          "info": {
+            "name": "Download a single consent form as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/intakes/:intakeId/consent/:consentFormId/pdf",
+            "params": [
+              {
+                "name": "intakeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "consentFormId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a single consent form as PDF"
+        },
+        {
+          "info": {
+            "name": "Send an intake questionnaire to a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/intakes/send",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an intake questionnaire to a client"
+        },
+        {
+          "info": {
+            "name": "Resend a previously sent intake",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/intakes/resend",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resend a previously sent intake"
+        },
+        {
+          "info": {
+            "name": "Update office-use-only answers on an intake",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://intakeq.com/api/v1/intakes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update office-use-only answers on an intake"
+        },
+        {
+          "info": {
+            "name": "List questionnaire templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/questionnaires"
+          },
+          "docs": "List questionnaire templates"
+        },
+        {
+          "info": {
+            "name": "List account practitioners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://intakeq.com/api/v1/practitioners"
+          },
+          "docs": "List account practitioners"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
