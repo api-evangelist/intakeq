@@ -99,6 +99,8 @@ apis:
   humanURL: https://support.intakeq.com/article/251-intakeq-client-api
   baseURL: https://intakeq.com/api/v1
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
