@@ -220,6 +220,9 @@ apis:
   - type: APIReference
     url: https://support.intakeq.com/article/430-intakeq-files-api
 common:
+- type: CapabilityMap
+  url: capabilities/intakeq-capability-edges.yml
+  name: IntakeQ Business Capability Map
 - type: AgenticAccess
   url: agentic-access/intakeq-agentic-access.yml
 - type: DomainSecurity
