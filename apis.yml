@@ -11,6 +11,18 @@ description: IntakeQ is a HIPAA-compliant practice management platform for healt
   https://intakeq.com/api/v1 authenticated with an X-Auth-Key header, covering
   clients, appointments, intake questionnaires, treatment notes, invoices, and file
   attachments, plus webhooks for intake completion, note locking, and invoice events.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: open
