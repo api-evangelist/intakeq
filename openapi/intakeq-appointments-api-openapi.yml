@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: IntakeQ Appointments API
-  description: The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners. It exposes clients, appointments, intake questionnaires and consent forms, treatment notes, invoices, and file attachments. All endpoints live under https://intakeq.com/api/v1 and every request must carry the account's API key in an `X-Auth-Key` header (found under More > Settings > Integrations > Developer API). Several resources also emit webhooks (intake completed, note locked, invoice events) configured in the API settings; those are server-to-endpoint HTTP callbacks and are not modeled as request/response operations here.
+  description: The IntakeQ API is a documented REST API for the IntakeQ / PracticeQ practice management platform used by health and wellness practitioners.
   version: '1.0'
   contact:
     name: IntakeQ
@@ -188,22 +188,27 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
-    Unauthorized:
-      description: Missing or invalid X-Auth-Key.
   schemas:
-    Practitioner:
+    AppointmentUpdate:
       type: object
+      required:
+      - Id
+      - UtcDateTime
       properties:
         Id:
           type: string
-        CompleteName:
+        UtcDateTime:
+          type: integer
+        ServiceId:
           type: string
-        Email:
+        LocationId:
           type: string
-      additionalProperties: true
+        Status:
+          type: string
+        SendClientEmailNotification:
+          type: boolean
+        ReminderType:
+          type: string
     AppointmentCreate:
       type: object
       required:
@@ -233,6 +238,16 @@ components:
           type: boolean
         ReminderType:
           type: string
+    Practitioner:
+      type: object
+      properties:
+        Id:
+          type: string
+        CompleteName:
+          type: string
+        Email:
+          type: string
+      additionalProperties: true
     Appointment:
       type: object
       properties:
@@ -260,26 +275,11 @@ components:
         Price:
           type: number
       additionalProperties: true
-    AppointmentUpdate:
-      type: object
-      required:
-      - Id
-      - UtcDateTime
-      properties:
-        Id:
-          type: string
-        UtcDateTime:
-          type: integer
-        ServiceId:
-          type: string
-        LocationId:
-          type: string
-        Status:
-          type: string
-        SendClientEmailNotification:
-          type: boolean
-        ReminderType:
-          type: string
+  responses:
+    RateLimited:
+      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
+    Unauthorized:
+      description: Missing or invalid X-Auth-Key.
   securitySchemes:
     authKey:
       type: apiKey
