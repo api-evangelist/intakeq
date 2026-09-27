@@ -188,7 +188,22 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
+    Unauthorized:
+      description: Missing or invalid X-Auth-Key.
   schemas:
+    Practitioner:
+      type: object
+      properties:
+        Id:
+          type: string
+        CompleteName:
+          type: string
+        Email:
+          type: string
+      additionalProperties: true
     AppointmentUpdate:
       type: object
       required:
@@ -238,16 +253,6 @@ components:
           type: boolean
         ReminderType:
           type: string
-    Practitioner:
-      type: object
-      properties:
-        Id:
-          type: string
-        CompleteName:
-          type: string
-        Email:
-          type: string
-      additionalProperties: true
     Appointment:
       type: object
       properties:
@@ -275,11 +280,6 @@ components:
         Price:
           type: number
       additionalProperties: true
-  responses:
-    RateLimited:
-      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
-    Unauthorized:
-      description: Missing or invalid X-Auth-Key.
   securitySchemes:
     authKey:
       type: apiKey
