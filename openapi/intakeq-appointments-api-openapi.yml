@@ -188,11 +188,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
-    Unauthorized:
-      description: Missing or invalid X-Auth-Key.
   schemas:
     Practitioner:
       type: object
@@ -203,6 +198,33 @@ components:
           type: string
         Email:
           type: string
+      additionalProperties: true
+    Appointment:
+      type: object
+      properties:
+        Id:
+          type: string
+        ClientId:
+          type: integer
+        ClientName:
+          type: string
+        PractitionerId:
+          type: string
+        ServiceId:
+          type: string
+        ServiceName:
+          type: string
+        LocationId:
+          type: string
+        Status:
+          type: string
+        StartDate:
+          type: integer
+          description: Unix timestamp (ms) of the appointment start.
+        Duration:
+          type: integer
+        Price:
+          type: number
       additionalProperties: true
     AppointmentUpdate:
       type: object
@@ -253,33 +275,11 @@ components:
           type: boolean
         ReminderType:
           type: string
-    Appointment:
-      type: object
-      properties:
-        Id:
-          type: string
-        ClientId:
-          type: integer
-        ClientName:
-          type: string
-        PractitionerId:
-          type: string
-        ServiceId:
-          type: string
-        ServiceName:
-          type: string
-        LocationId:
-          type: string
-        Status:
-          type: string
-        StartDate:
-          type: integer
-          description: Unix timestamp (ms) of the appointment start.
-        Duration:
-          type: integer
-        Price:
-          type: number
-      additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-Auth-Key.
+    RateLimited:
+      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
   securitySchemes:
     authKey:
       type: apiKey

@@ -203,10 +203,10 @@ components:
           type: boolean
       additionalProperties: true
   responses:
-    RateLimited:
-      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
     Unauthorized:
       description: Missing or invalid X-Auth-Key.
+    RateLimited:
+      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
   securitySchemes:
     authKey:
       type: apiKey
