@@ -199,6 +199,35 @@ components:
         Email:
           type: string
       additionalProperties: true
+    AppointmentCreate:
+      type: object
+      required:
+      - PractitionerId
+      - ClientId
+      - ServiceId
+      - LocationId
+      - Status
+      - UtcDateTime
+      - SendClientEmailNotification
+      - ReminderType
+      properties:
+        PractitionerId:
+          type: string
+        ClientId:
+          type: integer
+        ServiceId:
+          type: string
+        LocationId:
+          type: string
+        Status:
+          type: string
+        UtcDateTime:
+          type: integer
+          description: Appointment time as a UTC Unix timestamp.
+        SendClientEmailNotification:
+          type: boolean
+        ReminderType:
+          type: string
     Appointment:
       type: object
       properties:
@@ -242,35 +271,6 @@ components:
           type: string
         Status:
           type: string
-        SendClientEmailNotification:
-          type: boolean
-        ReminderType:
-          type: string
-    AppointmentCreate:
-      type: object
-      required:
-      - PractitionerId
-      - ClientId
-      - ServiceId
-      - LocationId
-      - Status
-      - UtcDateTime
-      - SendClientEmailNotification
-      - ReminderType
-      properties:
-        PractitionerId:
-          type: string
-        ClientId:
-          type: integer
-        ServiceId:
-          type: string
-        LocationId:
-          type: string
-        Status:
-          type: string
-        UtcDateTime:
-          type: integer
-          description: Appointment time as a UTC Unix timestamp.
         SendClientEmailNotification:
           type: boolean
         ReminderType:

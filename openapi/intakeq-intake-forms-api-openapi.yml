@@ -213,16 +213,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Practitioner:
-      type: object
-      properties:
-        Id:
-          type: string
-        CompleteName:
-          type: string
-        Email:
-          type: string
-      additionalProperties: true
     IntakeSummary:
       type: object
       properties:
@@ -237,6 +227,16 @@ components:
         Status:
           type: string
         QuestionnaireName:
+          type: string
+      additionalProperties: true
+    Practitioner:
+      type: object
+      properties:
+        Id:
+          type: string
+        CompleteName:
+          type: string
+        Email:
           type: string
       additionalProperties: true
   responses:
