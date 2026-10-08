@@ -177,3 +177,48 @@ plans:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  units:
+  - period
+  - seat
+  plans:
+  - name: Forms Only - Low Volume
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - period
+    - seat
+    periods:
+    - month
+  - name: Forms Only
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - period
+    - seat
+    periods:
+    - month
+  - name: Practice Management - Low Volume
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - period
+    - seat
+    periods:
+    - month
+  - name: Practice Management (PracticeQ)
+    access: paid
+    model: seat
+    model_how: derived
+    units:
+    - period
+    - seat
+    periods:
+    - month
