@@ -188,6 +188,11 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
+    Unauthorized:
+      description: Missing or invalid X-Auth-Key.
   schemas:
     Practitioner:
       type: object
@@ -199,35 +204,6 @@ components:
         Email:
           type: string
       additionalProperties: true
-    AppointmentCreate:
-      type: object
-      required:
-      - PractitionerId
-      - ClientId
-      - ServiceId
-      - LocationId
-      - Status
-      - UtcDateTime
-      - SendClientEmailNotification
-      - ReminderType
-      properties:
-        PractitionerId:
-          type: string
-        ClientId:
-          type: integer
-        ServiceId:
-          type: string
-        LocationId:
-          type: string
-        Status:
-          type: string
-        UtcDateTime:
-          type: integer
-          description: Appointment time as a UTC Unix timestamp.
-        SendClientEmailNotification:
-          type: boolean
-        ReminderType:
-          type: string
     Appointment:
       type: object
       properties:
@@ -275,11 +251,35 @@ components:
           type: boolean
         ReminderType:
           type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid X-Auth-Key.
-    RateLimited:
-      description: Rate limit exceeded (standard subscription allows 10 requests/minute, max 500/day).
+    AppointmentCreate:
+      type: object
+      required:
+      - PractitionerId
+      - ClientId
+      - ServiceId
+      - LocationId
+      - Status
+      - UtcDateTime
+      - SendClientEmailNotification
+      - ReminderType
+      properties:
+        PractitionerId:
+          type: string
+        ClientId:
+          type: integer
+        ServiceId:
+          type: string
+        LocationId:
+          type: string
+        Status:
+          type: string
+        UtcDateTime:
+          type: integer
+          description: Appointment time as a UTC Unix timestamp.
+        SendClientEmailNotification:
+          type: boolean
+        ReminderType:
+          type: string
   securitySchemes:
     authKey:
       type: apiKey
