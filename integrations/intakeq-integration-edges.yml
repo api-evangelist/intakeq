@@ -25,8 +25,26 @@ edges:
     builder: unknown (not in the directory record)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Zoom (own)
+  partner: zoom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.zoom.us/apps/mqVCmWSBRD-kkj7WTmrcWA
+  mirror_of: zoom/integrations/zoom-integration-edges.yml
+  apps:
+  - IntakeQ
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Zoom app
 method: searched
 checked:
 - https://zapier.com/api/v4/apps/
+- zoom/integrations/zoom-integration-edges.yml
 source:
 - https://zapier.com/api/v4/apps/
