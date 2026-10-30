@@ -1,4 +1,4 @@
-# IntakeQ (intakeq)
+# IntakeQ
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,163 +64,127 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-IntakeQ is a HIPAA-compliant practice management platform for health and wellness practitioners - therapists, chiropractors, counselors, dietitians, and other small practices. It provides secure electronic intake forms, e-signatures, and document sharing, and through its PracticeQ tier adds appointment scheduling, a booking widget, a secure client portal, payments and invoicing, treatment notes, telehealth, and insurance billing. IntakeQ publishes a documented REST API under `https://intakeq.com/api/v1` authenticated with an `X-Auth-Key` header, covering clients, appointments, intake questionnaires, treatment notes, invoices, and file attachments, plus webhooks for intake completion, note locking, and invoice events.
+IntakeQ is a HIPAA-compliant practice management platform for health and wellness practitioners - therapists, chiropractors, counselors, dietitians, and other small practices. It provides secure electronic intake forms, e-signatures, and document sharing, and through its PracticeQ tier adds appointment scheduling, a booking widget, a secure client portal, payments and invoicing, treatment notes, telehealth, and insurance billing. IntakeQ publishes a documented REST API under https://intakeq.com/api/v1 authenticated with an X-Auth-Key header, covering clients, appointments, intake questionnaires, treatment notes, invoices, and file attachments, plus webhooks for intake completion, note locking, and invoice events.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/intakeq/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/intakeq/refs/heads/main/apis.yml)
+**Areas:** Practice Management · Intake Forms · Scheduling · Health and Wellness · Electronic Health Records · Telehealth · HIPAA
 
-## Tags
+## IntakeQ on APIs.io
 
-- Practice Management
-- Intake Forms
-- Scheduling
-- Health and Wellness
-- EHR
-- Telehealth
-- HIPAA
+Everything profiled for IntakeQ is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/intakeq/](https://apis.io/providers/intakeq/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+- [IntakeQ Appointments API](https://apis.io/apis/intakeq/intakeq-appointments-api/) — Appointments, booking settings, and cancellation.
+- [IntakeQ Clients API](https://apis.io/apis/intakeq/intakeq-clients-api/) — Clients (patients), tags, and diagnoses.
+- [IntakeQ Files API](https://apis.io/apis/intakeq/intakeq-files-api/) — Client file attachments and folders.
+- [IntakeQ Intake Forms API](https://apis.io/apis/intakeq/intakeq-intake-forms-api/) — Intake questionnaires, consent forms, templates, and practitioners.
+- [IntakeQ Invoices API](https://apis.io/apis/intakeq/intakeq-invoices-api/) — Invoice query and retrieval.
+- [IntakeQ Treatment Notes API](https://apis.io/apis/intakeq/intakeq-treatment-notes-api/) — Treatment / clinical notes and PDF export.
 
-## APIs
+### Published properties
 
-### IntakeQ Clients API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Query, create, and update clients (patients) in an IntakeQ account, search by name, email, client ID, custom fields, external ID, or created/updated date ranges, add and remove client tags, and retrieve a client's diagnoses.
+#### Agentic access (1)
 
-- **Human URL:** [https://support.intakeq.com/article/251-intakeq-client-api](https://support.intakeq.com/article/251-intakeq-client-api)
-- **Base URL:** `https://intakeq.com/api/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Intakeq Agentic Access](https://apis.io/agentic-access/intakeq/intakeq-agentic-access/)
 
-- Clients
-- Patients
-- CRM
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [API Reference](https://support.intakeq.com/article/251-intakeq-client-api)
-- [Documentation](https://support.intakeq.com/category/560-api)
-- [OpenAPI](openapi/intakeq-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/intakeq.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/intakeq.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [IntakeQ API](https://apis.io/collections/intakeq/open-intakeq/)
+- [IntakeQ Appointments API](https://apis.io/collections/intakeq/open-intakeq-appointments-api/)
+- [IntakeQ Appointments Clients API](https://apis.io/collections/intakeq/open-intakeq-clients-api/)
+- [IntakeQ Appointments Files API](https://apis.io/collections/intakeq/open-intakeq-files-api/)
+- [IntakeQ Appointments Intake Forms API](https://apis.io/collections/intakeq/open-intakeq-intake-forms-api/)
+- [IntakeQ Appointments Invoices API](https://apis.io/collections/intakeq/open-intakeq-invoices-api/)
+- [IntakeQ Appointments Treatment Notes API](https://apis.io/collections/intakeq/open-intakeq-treatment-notes-api/)
 
-### IntakeQ Appointments API
+#### Security (2)
 
-Query appointments by client, date range, status, or practitioner, retrieve a single appointment, read booking settings (services, locations, practitioners), and create, update, or cancel appointments in the PracticeQ scheduler.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://support.intakeq.com/article/204-intakeq-appointments-api](https://support.intakeq.com/article/204-intakeq-appointments-api)
-- **Base URL:** `https://intakeq.com/api/v1`
+- [Intakeq Authentication](https://apis.io/security/intakeq/intakeq-authentication/)
+- [Intakeq Domain Security](https://apis.io/security/intakeq/intakeq-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Appointments
-- Scheduling
-- Booking
+Published plans, tiers and prices.
 
-#### Properties
+- [Intakeq Plans Pricing](https://apis.io/plans/intakeq/intakeq-plans-pricing/)
 
-- [API Reference](https://support.intakeq.com/article/204-intakeq-appointments-api)
-- [Documentation](https://support.intakeq.com/category/560-api)
-- [OpenAPI](openapi/intakeq-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/intakeq.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/intakeq.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### IntakeQ Intake Forms API
+Published request limits.
 
-Query intake form summaries, retrieve a completed intake as JSON or download it as a PDF (including individual consent forms), send or resend a questionnaire to a client, update office-use-only answers, and list available questionnaire templates and account practitioners.
+- [Intakeq Rate Limits](https://apis.io/rate-limits/intakeq/intakeq-rate-limits/)
 
-- **Human URL:** [https://support.intakeq.com/article/31-intakeq-api](https://support.intakeq.com/article/31-intakeq-api)
-- **Base URL:** `https://intakeq.com/api/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Intake Forms
-- Questionnaires
-- Consent Forms
+- [Intakeq Finops](https://apis.io/finops/intakeq/intakeq-finops/)
 
-#### Properties
+## Where to find this API
 
-- [API Reference](https://support.intakeq.com/article/31-intakeq-api)
-- [Documentation](https://support.intakeq.com/category/560-api)
-- [OpenAPI](openapi/intakeq-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/intakeq.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/intakeq.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### IntakeQ Treatment Notes API
-
-Query treatment note summaries by client, status, or date range, retrieve the full JSON of a locked treatment note, and download a treatment note as a PDF. A note-locked webhook notifies external systems when staff lock a note.
-
-- **Human URL:** [https://support.intakeq.com/article/342-intakeq-notes-api](https://support.intakeq.com/article/342-intakeq-notes-api)
-- **Base URL:** `https://intakeq.com/api/v1`
-
-#### Tags
-
-- Treatment Notes
-- Clinical Documentation
-- SOAP Notes
-
-#### Properties
-
-- [API Reference](https://support.intakeq.com/article/342-intakeq-notes-api)
-- [Documentation](https://support.intakeq.com/category/560-api)
-- [OpenAPI](openapi/intakeq-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/intakeq.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/intakeq.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### IntakeQ Invoices API
-
-Query invoices by client, date range, status, practitioner, or invoice number, and retrieve a single invoice by ID. An invoice-events webhook fires on issue, payment, refund, cancellation, and failed auto-charge or payment-plan charge events.
-
-- **Human URL:** [https://support.intakeq.com/article/385-intakeq-invoice-api](https://support.intakeq.com/article/385-intakeq-invoice-api)
-- **Base URL:** `https://intakeq.com/api/v1`
-
-#### Tags
-
-- Invoices
-- Billing
-- Payments
-
-#### Properties
-
-- [API Reference](https://support.intakeq.com/article/385-intakeq-invoice-api)
-- [Documentation](https://support.intakeq.com/category/560-api)
-- [OpenAPI](openapi/intakeq-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/intakeq.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/intakeq.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### IntakeQ Files API
-
-List a client's files and the account's folders, download a file by ID, upload a new file to a client's record, and delete a file. Used to move documents and attachments in and out of a client's secure file repository.
-
-- **Human URL:** [https://support.intakeq.com/article/430-intakeq-files-api](https://support.intakeq.com/article/430-intakeq-files-api)
-- **Base URL:** `https://intakeq.com/api/v1`
-
-#### Tags
-
-- Files
-- Attachments
-- Documents
-
-#### Properties
-
-- [API Reference](https://support.intakeq.com/article/430-intakeq-files-api)
-- [Documentation](https://support.intakeq.com/category/560-api)
-- [OpenAPI](openapi/intakeq-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/intakeq.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/intakeq.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/intakeq)
 - [Website](https://intakeq.com)
 - [Documentation](https://support.intakeq.com/category/560-api)
-- [Plans](plans/intakeq-plans-pricing.yml)
-- [Rate Limits](rate-limits/intakeq-rate-limits.yml)
-- [Fin Ops](finops/intakeq-finops.yml)
+- [Blog](https://forms.intakeq.com/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 22.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | verified |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/intakeq/](https://apis.io/providers/intakeq/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for IntakeQ: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/intakeq/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
